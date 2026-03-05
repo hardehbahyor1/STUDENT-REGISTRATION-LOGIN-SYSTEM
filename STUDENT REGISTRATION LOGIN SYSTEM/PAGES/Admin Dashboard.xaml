@@ -1,0 +1,58 @@
+﻿<Page x:Class="STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_Dashboard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Admin_Dashboard">
+
+    <Grid x:Name="Admin_login_MainGrid">
+        <Border Width="700" Padding="30" VerticalAlignment="Center" HorizontalAlignment="Center"
+                CornerRadius="15">
+            <!--Admin Login COntainer -->
+            <StackPanel>
+                <!--Title Description-->
+                <WrapPanel Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                    <Image Source="/IMAGES/contact image icon.png" Width="50"/>
+                    <TextBlock FontWeight="ExtraBold" FontFamily="Arial Black" FontSize="30" 
+                       Foreground="Green" Background="White"
+                       HorizontalAlignment="Center" Margin="0,0,0,20">
+                        ADMIN LOGIN
+                    </TextBlock>
+                </WrapPanel>
+                
+
+                <!-- ADMIN ID -->
+                <TextBlock Text="ADMIN ID" FontFamily="Cascadia Code" FontWeight="Bold" FontSize="20" Foreground="Green"/>
+                <TextBox x:Name="Txtbox_Admin_ID"  Height="30" Margin="0,5,0,15"/>
+
+                <!-- PASSWORD -->
+                <TextBlock Text="PASSWORD" Foreground="Green" FontFamily="Cascadia Code" FontWeight="Bold" FontSize="20"/>
+                <PasswordBox x:Name="PsswrdBox_Admin" FontFamily="Cascadia Code"  Foreground="Green" Margin="0,5,0,20"
+                             Height="20"/>
+
+                <!--Login Btn -->
+                <Button x:Name="Btn_Submit_Admin_Login" ToolTip="Proceed to Login" Width="100" Click="Btn_Submit_Admin_Login_Click">
+                    <WrapPanel>
+                        <Image Source="/IMAGES/Submit bttton.jpg" Width="100"/>
+                    </WrapPanel>
+                </Button>
+                
+                <WrapPanel Margin="0,5,0,0">
+                    <TextBlock Text="If you don't Have an Account Yet Please Kindly Create One by clicking the button here " 
+                            FontStyle="Italic" FontWeight="Light" FontSize="15"
+                            FontFamily="Times New Roman" Foreground="Green"/>
+                    <Button x:Name="Btn_CreateAdmin_Account" Click="Btn_CreateAdmin_Account_Click"
+                            FontWeight="ExtraBold" Foreground="Green" Background="White"
+                            Width="70" Content="SIGN UP"
+                            ToolTip="Click to Naviage to Account Creation Page">
+                    </Button>
+                </WrapPanel>
+                
+                
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

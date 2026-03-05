@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <RootNamespace>STUDENT_REGISTRATION_LOGIN_SYSTEM</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DATABASE\AdminDataBase.json" />
+    <None Remove="DATABASE\StudentList.json" />
+    <None Remove="IMAGES\bckwrd button img.png" />
+    <None Remove="IMAGES\contact image icon.png" />
+    <None Remove="IMAGES\login icon 3.jpg" />
+    <None Remove="IMAGES\login image 2.jpg" />
+    <None Remove="IMAGES\logout image 2.jpg" />
+    <None Remove="IMAGES\logout img.jpg" />
+    <None Remove="IMAGES\photo-1516979187457-637abb4f9353.jpeg" />
+    <None Remove="IMAGES\photo-1524995997946-a1c2e315a42f.jpeg" />
+    <None Remove="IMAGES\Submit bttton.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="DATABASE\AdminDataBase.json" />
+    <Resource Include="DATABASE\StudentList.json" />
+    <Resource Include="IMAGES\bckwrd button img.png" />
+    <Resource Include="IMAGES\contact image icon.png" />
+    <Resource Include="IMAGES\login icon 3.jpg" />
+    <Resource Include="IMAGES\login image 2.jpg" />
+    <Resource Include="IMAGES\logout image 2.jpg" />
+    <Resource Include="IMAGES\logout img.jpg" />
+    <Resource Include="IMAGES\photo-1516979187457-637abb4f9353.jpeg" />
+    <Resource Include="IMAGES\photo-1524995997946-a1c2e315a42f.jpeg" />
+    <Resource Include="IMAGES\Submit bttton.jpg" />
+  </ItemGroup>
+
+</Project>
