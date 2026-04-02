@@ -6,121 +6,176 @@
       xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Registration">
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="Registration"
+      FontFamily="Segoe UI" FontSize="14" Background="Transparent">
 
-    <Grid x:Name="Registration_Grid" >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="947.5"/>
-        </Grid.ColumnDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+        <StackPanel MaxWidth="750" HorizontalAlignment="Center">
 
-        <StackPanel Grid.Column="1">
+            <TextBlock Text="Student Registration" FontSize="26" FontWeight="SemiBold" Foreground="#2B3035" Margin="0,0,0,25" HorizontalAlignment="Center"/>
 
-            <!--STUDENT ID -->
-            <WrapPanel Margin="0,10,5,10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Label Content="ID NO:" FontWeight="Bold" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White"/>
-               
-                <TextBox x:Name="txtbox_Stdnt_ID" Width="200" TextWrapping="Wrap" BorderBrush="Black" BorderThickness="2"
-                         FontFamily="Times New Roman" FontSize="15" 
-                         Text="{Binding Student.Stdnt_ID, UpdateSourceTrigger=PropertyChanged}"
-                         IsReadOnly="True"
-                         IsEnabled="False"
-                />
-            </WrapPanel>
+            <Border Background="White" Padding="30" CornerRadius="8" BorderBrush="#DEE2E6" BorderThickness="1">
+                <StackPanel>
 
-            <!--FIRSTNAME, MIDDLE NAME & LAST NAME -->
-            <WrapPanel Margin="0,10,5,10" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label Content="FIRST-NAME:" FontWeight="Medium" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White"/>
-           
-                <TextBox x:Name="txtbox_fname" Width="200" TextWrapping="Wrap" BorderBrush="Black" BorderThickness="2"
-                        FontFamily="Times New Roman" FontSize="15" 
-                         Text="{Binding Student.Fname, UpdateSourceTrigger=PropertyChanged}"/>
-            </WrapPanel>
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="ID NO:" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#495057" />
+                        <TextBox x:Name="txtbox_Stdnt_ID" Grid.Column="1" Padding="8,6" BorderThickness="1" BorderBrush="#CED4DA" Background="#E9ECEF"
+                                 Text="{Binding Student.Stdnt_ID, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" IsEnabled="False" MaxWidth="250" HorizontalAlignment="Left"/>
+                    </Grid>
 
-            <WrapPanel Margin="0,10,5,10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Label Content="MIDDLE-NAME:" FontWeight="Medium" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White"/>
-               
-                <TextBox x:Name="txtbox_Mname" Width="200" TextWrapping="Wrap" BorderBrush="Black" BorderThickness="2" 
-                         FontFamily="Times New Roman" FontSize="15" 
-                         Text="{Binding Student.Mname, UpdateSourceTrigger=PropertyChanged}"/>
-            </WrapPanel>
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="First Name:" VerticalAlignment="Center" FontWeight="Medium" Foreground="#495057" />
+                        <TextBox x:Name="txtbox_fname" Grid.Column="1" Padding="8,6" BorderThickness="1" BorderBrush="#CED4DA" 
+                                 Text="{Binding Student.Fname, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
 
-            <WrapPanel Margin="0,10,5,10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Label Content="LAST-NAME:" FontWeight="Medium" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White"/>
-                
-                <TextBox x:Name="txtbox_Lname" Width="200" TextWrapping="Wrap" BorderBrush="Black" BorderThickness="2" 
-                         FontFamily="Times New Roman" FontSize="15" 
-                         Text="{Binding Student.Lname, UpdateSourceTrigger=PropertyChanged}"/>
-            </WrapPanel>
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Middle Name:" VerticalAlignment="Center" FontWeight="Medium" Foreground="#495057" />
+                        <TextBox x:Name="txtbox_Mname" Grid.Column="1" Padding="8,6" BorderThickness="1" BorderBrush="#CED4DA" 
+                                 Text="{Binding Student.Mname, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
 
-            <!-- COUNTRY OF ORIGIN COMBO BOX -->
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Last Name:" VerticalAlignment="Center" FontWeight="Medium" Foreground="#495057" />
+                        <TextBox x:Name="txtbox_Lname" Grid.Column="1" Padding="8,6" BorderThickness="1" BorderBrush="#CED4DA" 
+                                 Text="{Binding Student.Lname, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
 
-            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,15">
-                <Label Content="COUNTRY:" FontWeight="Medium" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White"/>
-                <ComboBox Name="CountryComboBox" Width="150" BorderThickness="2" BorderBrush="Black" 
-                          SelectionChanged="CountryComboBox_SelectionChanged"
-                          SelectedItem="{Binding Student.Country, UpdateSourceTrigger=PropertyChanged}">
-                </ComboBox>
+                    <Separator Margin="0,10,0,20" Background="#DEE2E6"/>
 
-                <Label Content="STATE:" FontWeight="Medium" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White" Margin="5,0,0,0"/>
-                <ComboBox Name="StateComboBox" Width="150" BorderThickness="2" BorderBrush="Black" 
-                              SelectionChanged="StateComboBox_SelectionChanged"
-                          SelectedItem="{Binding Student.State, UpdateSourceTrigger=PropertyChanged}">
-                </ComboBox>
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Location:" VerticalAlignment="Center" FontWeight="Medium" Foreground="#495057" />
 
-                <Label Content="LGA:" FontWeight="Medium" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White"/>
-                <ComboBox Name="LGAComboBox" Width="120" BorderThickness="2" BorderBrush="Black"
-                          SelectedItem="{Binding Student.LocalGovtArea, UpdateSourceTrigger=PropertyChanged}">
-                </ComboBox>
-            </WrapPanel>
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-            <!-- SEX & DOB & EMAIL-->
-            <WrapPanel Margin="0,15,0,0">
-                <Label Content="DOB:" FontWeight="Medium" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White"/>
-                <DatePicker x:Name="DOB_Datepicker" SelectedDateFormat="Long" ToolTip="Select your date of birth"
-                                DisplayDateEnd="{x:Static sys:DateTime.Today}"
-                            SelectedDate="{Binding Student.DateOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Country" FontSize="12" Foreground="#6C757D" Margin="0,0,0,2"/>
+                                <ComboBox Name="CountryComboBox" Padding="6" BorderThickness="1" BorderBrush="#CED4DA" 
+                                          SelectionChanged="CountryComboBox_SelectionChanged"
+                                          SelectedItem="{Binding Student.Country, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
 
-                <Label Content="SEX:" FontWeight="Medium" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White"  Margin="5,0,0,0"/>
-                <ComboBox Name="Sex_Combobox" Width="70" BorderBrush="Black" BorderThickness="2" 
-                          SelectedItem="{Binding Student.Gender, UpdateSourceTrigger=PropertyChanged}" >
-                    <ComboBoxItem Content="select option" IsEnabled="False"/>
-                    <ComboBoxItem Content="MALE"/>
-                    <ComboBoxItem Content="FEMALE"/>
-                   
-                </ComboBox>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="State" FontSize="12" Foreground="#6C757D" Margin="0,0,0,2"/>
+                                <ComboBox Name="StateComboBox" Padding="6" BorderThickness="1" BorderBrush="#CED4DA" 
+                                          SelectionChanged="StateComboBox_SelectionChanged"
+                                          SelectedItem="{Binding Student.State, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
 
-                <Label Content="Email:" FontWeight="Medium" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White"  Margin="5,0,0,0" />
-                <TextBox x:Name="Email_Txtbox" AutoWordSelection="True" Width="500" FontFamily="Times New Roman" 
-                         FontSize="15" BorderBrush="Black" BorderThickness="2"
-                         Text="{Binding Student.Email, UpdateSourceTrigger=PropertyChanged}"/>
-            </WrapPanel>
+                            <StackPanel Grid.Column="4">
+                                <TextBlock Text="LGA" FontSize="12" Foreground="#6C757D" Margin="0,0,0,2"/>
+                                <ComboBox Name="LGAComboBox" Padding="6" BorderThickness="1" BorderBrush="#CED4DA" 
+                                          SelectedItem="{Binding Student.LocalGovtArea, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
 
-            <!-- MOBILE_NO & RESIDENTIAL ADDRESS-->
-            <WrapPanel Margin="0,15,0,0">
-                <Label Content="MOBILE NO:" FontWeight="Medium" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White"/>
-                <TextBox x:Name="MobileNo_txtbox" FontFamily="Times New Roman" FontSize="15" Width="100" BorderBrush="Black" BorderThickness="2"/>
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Demographics:" VerticalAlignment="Center" FontWeight="Medium" Foreground="#495057" />
 
-                <Label Content="RESIDENTIAL ADDRESS" FontWeight="Medium" FontSize="20" FontFamily="Cascadia Code" Background="Green" Foreground="White" Margin="5,0,0,0"/>
-                <TextBox x:Name="ResidentialAdd_txtbox" FontFamily="Times New Roman" FontSize="15" BorderThickness="2" 
-                         BorderBrush="Black" Width="400" TextWrapping="Wrap"
-                         Text="{Binding Student.Residential_Address, UpdateSourceTrigger=PropertyChanged}"/>
-            </WrapPanel>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <StackPanel Margin="0,0,20,0">
+                                <TextBlock Text="Date of Birth" FontSize="12" Foreground="#6C757D" Margin="0,0,0,2"/>
+                                <DatePicker x:Name="DOB_Datepicker" Width="180" Padding="4" BorderThickness="1" BorderBrush="#CED4DA"
+                                            SelectedDateFormat="Long" ToolTip="Select your date of birth" DisplayDateEnd="{x:Static sys:DateTime.Today}"
+                                            SelectedDate="{Binding Student.DateOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
 
-            <!--SUBMIT BUTTON -->
-            <Button Margin="25" Width="100" Background="Transparent" Foreground="Transparent" BorderBrush="Transparent" Click="Button_Click">
-                <WrapPanel>
-                    <Image Source="/IMAGES/Submit bttton.jpg" Width="100" ToolTip="Click to submit details"/>
-                </WrapPanel>
-            </Button>
+                            <StackPanel>
+                                <TextBlock Text="Sex" FontSize="12" Foreground="#6C757D" Margin="0,0,0,2"/>
+                                
+                                <ComboBox Name="Sex_Combobox" Width="120" Padding="6" BorderThickness="1" BorderBrush="#CED4DA"
+                                          SelectedValuePath="Content"
+                                          SelectedValue="{Binding Student.Gender, UpdateSourceTrigger=PropertyChanged}">
+                                    <ComboBoxItem Content="Select option" IsEnabled="False" IsSelected="True"/>
+                                    <ComboBoxItem>MALE</ComboBoxItem>
+                                    <ComboBoxItem>FEMALE</ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
 
-            <TextBlock Background="White" Foreground="Green" FontFamily="Cascadia Code" 
-                       FontWeight="Medium" FontSize="20" TextAlignment="Center"  Width="auto" TextWrapping="Wrap">
-                <Italic>After a Successful </Italic>  <Bold> REGISTRATION, ENSURE </Bold> to write down your <Bold> USER-ID and PASSWORD</Bold> 
-                which is by default your <Bold>LOGIN CREDENTIALS </Bold>
+                    <Separator Margin="0,10,0,20" Background="#DEE2E6"/>
+
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Email Address:" VerticalAlignment="Center" FontWeight="Medium" Foreground="#495057" />
+                        <TextBox x:Name="Email_Txtbox" Grid.Column="1" Padding="8,6" BorderThickness="1" BorderBrush="#CED4DA" 
+                                 Text="{Binding Student.Email, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Mobile No:" VerticalAlignment="Center" FontWeight="Medium" Foreground="#495057" />
+                        <TextBox x:Name="MobileNo_txtbox" Grid.Column="1" Padding="8,6" BorderThickness="1" BorderBrush="#CED4DA" MaxWidth="250" HorizontalAlignment="Left"
+                                 Text="{Binding Student.PhoneNUmber, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,25">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Residential Address:" VerticalAlignment="Top" Margin="0,8,0,0" FontWeight="Medium" Foreground="#495057" />
+                        <TextBox x:Name="ResidentialAdd_txtbox" Grid.Column="1" Padding="8,6" BorderThickness="1" BorderBrush="#CED4DA" Height="60" TextWrapping="Wrap" AcceptsReturn="True"
+                                 Text="{Binding Student.Residential_Address, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+
+                    <Button Content="Submit Registration" Click="Button_Click" Height="45" Background="#198754" Foreground="White" 
+                            FontSize="16" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Width="250" HorizontalAlignment="Center">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                </StackPanel>
+            </Border>
+
+            <TextBlock Margin="0,20,0,0" TextAlignment="Center" Foreground="#6C757D" FontSize="13">
+                After a successful registration, ensure to write down your <Run FontWeight="SemiBold" Foreground="#2B3035">User-ID and Password</Run>,<LineBreak/>
+                which are your default login credentials.
             </TextBlock>
 
         </StackPanel>
-    </Grid>
+    </ScrollViewer>
 </Page>

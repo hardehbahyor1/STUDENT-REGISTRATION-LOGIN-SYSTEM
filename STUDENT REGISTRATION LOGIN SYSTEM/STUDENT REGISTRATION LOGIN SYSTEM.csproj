@@ -12,29 +12,52 @@
   <ItemGroup>
     <None Remove="DATABASE\AdminDataBase.json" />
     <None Remove="DATABASE\StudentList.json" />
-    <None Remove="IMAGES\bckwrd button img.png" />
+    <None Remove="IMAGES\-registration-icon-class-register-icon-png.png" />
     <None Remove="IMAGES\contact image icon.png" />
+    <None Remove="IMAGES\dashboard icon.png" />
     <None Remove="IMAGES\login icon 3.jpg" />
-    <None Remove="IMAGES\login image 2.jpg" />
     <None Remove="IMAGES\logout image 2.jpg" />
-    <None Remove="IMAGES\logout img.jpg" />
+    <None Remove="IMAGES\password reset Image.png" />
     <None Remove="IMAGES\photo-1516979187457-637abb4f9353.jpeg" />
     <None Remove="IMAGES\photo-1524995997946-a1c2e315a42f.jpeg" />
+    <None Remove="IMAGES\result image.jpg" />
+    <None Remove="IMAGES\stock-photo-young-woman-is-sitting-with-her-arms-leaning-against-a-table-smiling-happily-she-is-wearing-2517102443.jpg" />
+    <None Remove="IMAGES\Student hostel.jpg" />
     <None Remove="IMAGES\Submit bttton.jpg" />
+    <None Remove="IMAGES\UC VIEW IMAGES\student image 1.jpg" />
+    <None Remove="IMAGES\UC VIEW IMAGES\student image 2.jpg" />
+    <None Remove="IMAGES\UC VIEW IMAGES\student image 3.jpg" />
+    <None Remove="IMAGES\UC VIEW IMAGES\student image 5jpg.jpg" />
+    <None Remove="IMAGES\UC VIEW IMAGES\student medical 4.jpg" />
+    <None Remove="IMAGES\UC VIEW IMAGES\student result.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="DATABASE\AdminDataBase.json" />
     <Resource Include="DATABASE\StudentList.json" />
-    <Resource Include="IMAGES\bckwrd button img.png" />
+    <Resource Include="IMAGES\-registration-icon-class-register-icon-png.png" />
     <Resource Include="IMAGES\contact image icon.png" />
     <Resource Include="IMAGES\login icon 3.jpg" />
-    <Resource Include="IMAGES\login image 2.jpg" />
     <Resource Include="IMAGES\logout image 2.jpg" />
-    <Resource Include="IMAGES\logout img.jpg" />
+    <Resource Include="IMAGES\password reset Image.png" />
     <Resource Include="IMAGES\photo-1516979187457-637abb4f9353.jpeg" />
     <Resource Include="IMAGES\photo-1524995997946-a1c2e315a42f.jpeg" />
+    <Resource Include="IMAGES\result image.jpg" />
+    <Resource Include="IMAGES\stock-photo-young-woman-is-sitting-with-her-arms-leaning-against-a-table-smiling-happily-she-is-wearing-2517102443.jpg" />
+    <Resource Include="IMAGES\Student hostel.jpg" />
     <Resource Include="IMAGES\Submit bttton.jpg" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="IMAGES\dashboard icon.png" />
+    <Resource Include="IMAGES\UC VIEW IMAGES\student image 1.jpg" />
+    <Resource Include="IMAGES\UC VIEW IMAGES\student image 2.jpg" />
+    <Resource Include="IMAGES\UC VIEW IMAGES\student image 3.jpg" />
+    <Resource Include="IMAGES\UC VIEW IMAGES\student image 5jpg.jpg" />
+    <Resource Include="IMAGES\UC VIEW IMAGES\student medical 4.jpg" />
+    <Resource Include="IMAGES\UC VIEW IMAGES\student result.jpg" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties database_4studentlist_1json__JsonSchema="https://acp-protocol.dev/schemas/v1/cache.schema.json" /></VisualStudio></ProjectExtensions>
 
 </Project>

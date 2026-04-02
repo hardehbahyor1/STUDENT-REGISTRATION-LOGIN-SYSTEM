@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Globalization;
+
 
 namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
 {
@@ -32,6 +34,15 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
             CountryComboBox.ItemsSource = countryStates.Keys;
             StateComboBox.IsEnabled = false;
             LGAComboBox.IsEnabled = false;
+        }// constructor
+
+        //DATA SAVING CASE SENSITIVITY HANDLER
+        public string ToProperCase(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return input;
+
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input.ToLower());
         }
 
         //COUNTRY & STATE DICTIONARY DEFEINITION
@@ -40,11 +51,11 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
             countryStates = new Dictionary<string, List<string>>
             {
                 { "NIGERIA", new List<string> { "OYO", "OSUN", "EKITI", "KWARA", "ONDO" } },
-                { "INDIA",new List<string> { "Maharashtra", "Karnataka", "DELHI" } },
+                { "INDIA",new List<string> { "MAHARASTRA", "HYDRABAD", "NEW DELHI" } },
                 { "UNITED KINGDOM", new List<string> { "ENGLAND", "SCOTLAND", "WALES" } },
                 { "UNITED STATES", new List<string> {"CALIFORNIA", "TEXAS", "NEW YORK"} },
                 { "CANADA", new List<string> { "BRITISH COLUMBIA", "ALBERTA", "ONTARIO" } },
-                { "SOUTH AFRICA", new List<string> { "GAUTENG" } },
+                { "SOUTH AFRICA", new List<string> { "GAUTENG", "JOHNESBURG" } },
             };
         }
 
@@ -60,7 +71,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
                 {"ONDO", new List<string>{"ONDO WEST", "OWO", "IDANRE", "AKURE SOUTH", "AKOKO NORTH-WEST"} },
             };
         }
-
+       // Dictionary<string, List<string>> department;
         private void CountryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CountryComboBox.SelectedItem == null)
@@ -93,10 +104,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
                // StateComboBox.SelectedIndex = -1;   // Reset state selection
             }
         }
-
-        //DATABASE SETUP
-        string Filepath = "StudentList.json";
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var vm = DataContext as StudentViewModel;
@@ -113,8 +120,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
                 return;
             }
 
-            string Name = $"{vm.Student.Fname} {vm.Student.Mname} {vm.Student.Lname}";
-            bool isDOBInvalid = vm.Student.DateOfBirth == null || vm.Student.DateOfBirth >= DateTime.Today; //verify DOB
+                        bool isDOBInvalid = vm.Student.DateOfBirth == null || vm.Student.DateOfBirth >= DateTime.Today; //verify DOB
 
             // --- Validation Guard Clauses ---
             // Ensures all required student information is present before processing
@@ -124,7 +130,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
                 string.IsNullOrWhiteSpace(vm.Student.Lname) || 
                 string.IsNullOrWhiteSpace(vm.Student.Residential_Address) ||
                 string.IsNullOrWhiteSpace(vm.Student.Gender) ||
-            //    string.IsNullOrEmpty(vm.Student.PhoneNUmber) ||
+                string.IsNullOrEmpty(vm.Student.PhoneNUmber) ||
                 string.IsNullOrWhiteSpace(vm.Student.Email) ||
                 isDOBInvalid
             )                
@@ -137,13 +143,15 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
             } 
             vm.GenerateStudentCredentials();
 
-            database_ConnectionPort.SaveData(new StudentInfo
-            {
-                Fname = "TEST",  // TESTING THE .JSON THAT IS NOT WORKING
-                Lname = "USER"
-            });
+            vm.Student.Fname = ToProperCase(vm.Student.Fname);
+            vm.Student.Mname = ToProperCase(vm.Student.Mname);
+            vm.Student.Lname = ToProperCase(vm.Student.Lname);
+            vm.Student.Email = vm.Student.Email?.ToLower();
+            vm.Student.Gender = vm.Student.Gender?.ToUpper();
 
-            database_ConnectionPort.SaveData(vm.Student);
+            string Name = $"{vm.Student.Fname} {vm.Student.Mname} {vm.Student.Lname}";
+
+            Database_ConnectionPort.SaveData(vm.Student);
             MessageBox.Show(
                 $"Registration Successful...... \n " +
                 $"NAME: {Name} \n" +

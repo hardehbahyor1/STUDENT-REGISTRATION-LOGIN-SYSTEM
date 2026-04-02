@@ -120,7 +120,8 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.VIEWMODEL
         {
             try
             {
-                string filePath = "AdminDataBase.json";
+                //string filePath = "AdminDataBase.json";
+                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AdminDataBase.json");
 
                 // Initialize with empty list; will be replaced if file contains valid data.
                 List<AdminViewmodel> adminList = new List<AdminViewmodel>();

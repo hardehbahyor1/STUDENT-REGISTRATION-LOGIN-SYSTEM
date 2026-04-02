@@ -66,15 +66,16 @@
             <ComboBox Name="CmbboxAdminDept" IsEnabled="True" Height="35" Margin="5" 
                       ToolTip="Choose the Appropriate Department"
                       VerticalContentAlignment="Center"
+                      SelectedValuePath="content"
                       SelectedItem="{Binding Admin_Dept, UpdateSourceTrigger = PropertyChanged}">
-                <ComboBoxItem Content="SCIENCE"/>
-                <ComboBoxItem Content="COMMERICAL"/>
-                <ComboBoxItem Content="ARTS"/>
-                <ComboBoxItem Content="ADMINISTRATION"/>
-                <ComboBoxItem Content="FINANCE"/>
-                <ComboBoxItem Content="STUDENT AFFAIRS"/>
-                <ComboBoxItem Content="HEALTH"/>
-                <ComboBoxItem Content="ICT / LAB"/>
+                <ComboBoxItem>SCIENCE</ComboBoxItem>
+                <ComboBoxItem> COMMERICAL</ComboBoxItem>
+                <ComboBoxItem> ARTS </ComboBoxItem>
+                <ComboBoxItem> ADMINISTRATION </ComboBoxItem>
+                <ComboBoxItem> FINANCE </ComboBoxItem>
+                <ComboBoxItem> STUDENT AFFAIRS </ComboBoxItem>
+                <ComboBoxItem>HEALTH</ComboBoxItem>
+                <ComboBoxItem> ICT /LAB </ComboBoxItem>
             </ComboBox>
 
             <!-- Username & Password -->

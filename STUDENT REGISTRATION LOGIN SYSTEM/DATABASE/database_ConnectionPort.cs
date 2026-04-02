@@ -9,7 +9,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE
 {
-    class database_ConnectionPort
+    class Database_ConnectionPort
     {
         private static readonly string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "StudentList.json");
         

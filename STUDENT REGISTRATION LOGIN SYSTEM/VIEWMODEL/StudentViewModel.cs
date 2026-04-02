@@ -32,7 +32,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.VIEWMODEL
             Student.Stdnt_ID = $"STD-{DateTime.Now:yyyyMMddHHmmss}";
 
             // Generate password
-            Student.Stdnt_Password = rand.Next(1000, 9999);
+            Student.Stdnt_Password = rand.Next(1000, 9999).ToString();
         }
     }
 }

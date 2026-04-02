@@ -10,7 +10,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
     public class StudentInfo : INotifyPropertyChanged
     {
         private string student_Id = string.Empty; // will be used as student USER_NAME
-        private int password;
+        private string password;
         private string firstname = string.Empty;
         private string lastname = string.Empty;
         private string middlename = string.Empty;
@@ -36,7 +36,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
             }
         }
 
-        public int Stdnt_Password
+        public string Stdnt_Password
         {
             get => password;
             set
