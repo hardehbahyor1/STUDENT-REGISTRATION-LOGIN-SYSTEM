@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="STUDENT REGISTRATION LOGIN SYSTEM" 
+        Title="STUDENT BIODATA CAPTURE MANAGEMENT SYSTEM SBCMS" 
         Height="600" 
         Width="800"  
         MinHeight="500"
@@ -17,7 +17,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="/IMAGES/photo-1516979187457-637abb4f9353.jpeg" Stretch="UniformToFill"/>
         </Grid.Background>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Visible"/>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Automatic"/>
     </Grid>
     
 </Window>

@@ -67,6 +67,7 @@
                       ToolTip="Choose the Appropriate Department"
                       VerticalContentAlignment="Center"
                       SelectedValuePath="content"
+                      
                       SelectedItem="{Binding Admin_Dept, UpdateSourceTrigger = PropertyChanged}">
                 <ComboBoxItem>SCIENCE</ComboBoxItem>
                 <ComboBoxItem> COMMERICAL</ComboBoxItem>

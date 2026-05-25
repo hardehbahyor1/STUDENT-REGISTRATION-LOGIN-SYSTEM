@@ -23,7 +23,8 @@
                             <ColumnDefinition Width="150" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="ID NO:" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#495057" />
+                        
+                        <TextBlock Text="ID NO:" VerticalAlignment="Center" FontWeight="Bold" Foreground="#495057" />
                         <TextBox x:Name="txtbox_Stdnt_ID" Grid.Column="1" Padding="8,6" BorderThickness="1" BorderBrush="#CED4DA" Background="#E9ECEF"
                                  Text="{Binding Student.Stdnt_ID, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" IsEnabled="False" MaxWidth="250" HorizontalAlignment="Left"/>
                     </Grid>
@@ -120,8 +121,8 @@
                                           SelectedValuePath="Content"
                                           SelectedValue="{Binding Student.Gender, UpdateSourceTrigger=PropertyChanged}">
                                     <ComboBoxItem Content="Select option" IsEnabled="False" IsSelected="True"/>
-                                    <ComboBoxItem>MALE</ComboBoxItem>
-                                    <ComboBoxItem>FEMALE</ComboBoxItem>
+                                    <ComboBoxItem> MALE </ComboBoxItem>
+                                    <ComboBoxItem> FEMALE </ComboBoxItem>
                                 </ComboBox>
                             </StackPanel>
                         </StackPanel>
@@ -160,7 +161,8 @@
                     </Grid>
 
                     <Button Content="Submit Registration" Click="Button_Click" Height="45" Background="#198754" Foreground="White" 
-                            FontSize="16" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Width="250" HorizontalAlignment="Center">
+                            FontSize="16" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Width="250" HorizontalAlignment="Center"
+                            IsDefault="True">  <!--meaning that the keyboaard Enter button can be used as shortcut-->
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="4"/>

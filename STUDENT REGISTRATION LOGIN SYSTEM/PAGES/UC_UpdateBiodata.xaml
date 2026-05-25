@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <!--<Grid>
         <Image Source="/IMAGES/UC VIEW IMAGES/student medical 4.jpg" 
        Opacity="0.2" 
        Stretch="UniformToFill"/>
@@ -24,5 +24,162 @@
            Foreground="White"
            Padding="20"/>
         </Border>
-    </Grid>
+    </Grid>-->
+
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="HeaderStyle">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="DarkGreen"/>
+            <Setter Property="Margin" Value="0,20,0,10"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="LabelStyle">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,5,0,2"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="0,0,15,10"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="0,0,15,10"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/> 
+                <RowDefinition Height="Auto"/> 
+                <RowDefinition Height="Auto"/> 
+                <RowDefinition Height="Auto"/> 
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/> 
+                <RowDefinition Height="Auto"/> 
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="UPDATE STUDENT BIO-DATA" FontSize="24" 
+                       FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <TextBlock Text="Student ID" FontWeight="Bold" Style="{StaticResource LabelStyle}"/>
+                <TextBox Text="{Binding Student.Stdnt_ID, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Background="#F0F0F0" Foreground="Gray"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <TextBlock Text="First Name" FontWeight="Bold" Style="{StaticResource LabelStyle}"/>
+                <TextBox Text="{Binding Student.Fname, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Background="#F0F0F0" Foreground="Gray"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="Academic Placement" Style="{StaticResource HeaderStyle}"/>
+            
+            <StackPanel Grid.Row="3" Grid.Column="0">
+                <TextBlock Text="Current Class" Style="{StaticResource LabelStyle}"/>
+                <ComboBox SelectedValuePath="Content"
+                          SelectedValue="{Binding Student.Stdnt_Class, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBoxItem Content="Select Your Class" IsEnabled="False" IsSelected="True"/>
+                    <ComboBoxItem Content="JSS 1"/>
+                    <ComboBoxItem Content="JSS 2"/>
+                    <ComboBoxItem Content="JSS 3"/>
+                    <ComboBoxItem Content="SS 1"/>
+                    <ComboBoxItem Content="SS 2"/>
+                    <ComboBoxItem Content="SS 3"/>
+                </ComboBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="3" Grid.Column="1">
+                <TextBlock Text="Department" Style="{StaticResource LabelStyle}"/>
+                <ComboBox SelectedValuePath="Content" SelectedValue="{Binding Student.Stdnt_Department, UpdateSourceTrigger=PropertyChanged}">
+                   
+                    <ComboBoxItem Content="Select Your Dept" IsEnabled="False" IsSelected="False"/>
+                    <ComboBoxItem Content="Junior Secondary"/>
+                    <ComboBoxItem Content="Science"/>
+                    <ComboBoxItem Content="Arts"/>
+                    <ComboBoxItem Content="Commercial"/>
+                </ComboBox>
+            </StackPanel>
+
+            <TextBlock Grid.Row="4" Grid.ColumnSpan="2" Text="Parent / Guardian Information" Style="{StaticResource HeaderStyle}"/>
+            
+            <StackPanel Grid.Row="5" Grid.Column="0">
+                <TextBlock Text="Parent Name" Style="{StaticResource LabelStyle}"/>
+                <TextBox Text="{Binding Student.ParentFullName, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            
+            <StackPanel Grid.Row="5" Grid.Column="1">
+                <TextBlock Text="Parent Phone Number" Style="{StaticResource LabelStyle}"/>
+                <TextBox Text="{Binding Student.ParentMobile_No, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            
+            <StackPanel Grid.Row="6" Grid.Column="0">
+                <TextBlock Text="Parent Address" Style="{StaticResource LabelStyle}"/>
+                <TextBox Text="{Binding Student.ParentResidentialAddress, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+           
+            <StackPanel Grid.Row="6" Grid.Column="1">
+                <TextBlock Text="Parent City" Style="{StaticResource LabelStyle}"/>
+                <TextBox Text="{Binding Student.parentCity, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="7" Grid.Column="0">
+                <TextBlock Text="Parent Occupation" Style="{StaticResource LabelStyle}"/>
+                <TextBox Text="{Binding Student.ParentJobOccupation, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <TextBlock Grid.Row="8" Grid.ColumnSpan="2" Text="Health &amp; Safety" Style="{StaticResource HeaderStyle}"/>
+            
+            <StackPanel Grid.Row="9" Grid.Column="0">
+                <TextBlock Text="Blood Group" Style="{StaticResource LabelStyle}"/>
+                <ComboBox SelectedValuePath="Content"
+                    
+                          SelectedValue="{Binding Student.StudentBloodGroup, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBoxItem Content="Select Blood Group" IsEnabled="False" IsSelected="True"/>
+                    <ComboBoxItem Content="A+"/>
+                    <ComboBoxItem Content="A-"/>
+                    <ComboBoxItem Content="B+"/>
+                    <ComboBoxItem Content="B-"/>
+                    <ComboBoxItem Content="AB+"/>
+                    <ComboBoxItem Content="AB-"/>
+                    <ComboBoxItem Content="O+"/>
+                    <ComboBoxItem Content="O-"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="9" Grid.Column="1">
+                <TextBlock Text="Known Allergies" Style="{StaticResource LabelStyle}"/>
+                <ComboBox SelectedValuePath="Content" SelectedValue="{Binding Student.StudentAllergies, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBoxItem Content="Select Allergies" IsEnabled="False" IsSelected="True"/>
+                    <ComboBoxItem Content="None"/>
+                    <ComboBoxItem Content="Peanuts"/>
+                    <ComboBoxItem Content="Shellfish"/>
+                    <ComboBoxItem Content="Pollen"/>
+                    <ComboBoxItem Content="Dust"/>
+                    <ComboBoxItem Content="Animal Dander"/>
+                    <ComboBoxItem Content="Insect Stings"/>
+                    <ComboBoxItem Content="Medication Allergies"/>
+                    <ComboBoxItem Content="Others"/>
+                </ComboBox>
+                
+            </StackPanel>
+
+            <Button x:Name="BtnSaveBioData" Grid.Row="10" Grid.ColumnSpan="2" 
+                    Content="SAVE BIO-DATA" 
+                    Background="Green" Foreground="White" 
+                    FontSize="16" FontWeight="Bold" 
+                    Padding="10" Margin="0,30,15,20" 
+                    HorizontalAlignment="Right" Width="200"
+                    Click="BtnSaveBioData_Click_1"  />
+        </Grid>
+    </ScrollViewer>
 </UserControl>

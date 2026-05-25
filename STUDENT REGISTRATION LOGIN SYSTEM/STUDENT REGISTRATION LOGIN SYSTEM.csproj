@@ -58,6 +58,12 @@
     <Resource Include="IMAGES\UC VIEW IMAGES\student result.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="DATABASE\Database_ConnectionPort.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties database_4studentlist_1json__JsonSchema="https://acp-protocol.dev/schemas/v1/cache.schema.json" /></VisualStudio></ProjectExtensions>
 
 </Project>

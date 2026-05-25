@@ -19,7 +19,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
     public partial class Registration : Page
     {
         
-        Dictionary<string, List<string>> countryStates;
+        Dictionary<string, List<string>> countryStates; // key & content
         Dictionary<string, List<string>> stateLGA;
         public Registration()
         {
@@ -65,7 +65,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
             stateLGA = new Dictionary<string, List<string>>
             {
                 {"OYO", new List<string> {"OYO EAST", "OYO WEST", "ATIBA", "AFIJIO", "EGBEDA" } },
-                {"OSUN", new List<string>{"OSOGBO", "IFE", "ILESHA", "IKIRE", "IKIRIN"} },
+                {"OSUN", new List<string>{"OSOGBO", "IFE", "ILESHA", "IKIRE", "IKIRUN"} },
                 {"KWARA", new List<string> {"EKITI", "OKE ERO", "ILORIN WEST", "ILORIN EAST", "BARUTEN", "PATIGI", "OFFA"} },
                 {"EKITI", new List<string>{"ADO EKITI", "OYE EKITI", "OSI EKITI", "IYUN EKITI", "IKOLE EKITI"} },
                 {"ONDO", new List<string>{"ONDO WEST", "OWO", "IDANRE", "AKURE SOUTH", "AKOKO NORTH-WEST"} },
@@ -77,7 +77,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
             if (CountryComboBox.SelectedItem == null)
                 return;
 
-            string selectedCountry = CountryComboBox.SelectedItem.ToString();
+            string selectedCountry = CountryComboBox.SelectedItem.ToString(); // create a string variabe and assign the comboBox object selected to it in form of a string()
 
             if (countryStates.ContainsKey(selectedCountry))
             {

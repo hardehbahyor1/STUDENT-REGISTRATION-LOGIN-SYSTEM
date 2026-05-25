@@ -58,7 +58,7 @@
                     Click="Btn_RegisterCourse_Click">
                 <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Image Source="/IMAGES/-registration-icon-class-register-icon-png.png"/>
-                    <TextBlock Text="REGISTER COURSE" Margin="10,5,0,15"/>
+                    <TextBlock Text="CLASS SUBJECT" Margin="10,5,0,15"/>
                 </WrapPanel>
             </Button>
 
@@ -69,7 +69,7 @@
                     Click="Btn_ViewResults_Click">
                 <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Image Source="/IMAGES/result image.jpg" Margin="-20,0,0,0"/>
-                    <TextBlock Text="VIEW RESULTS" Margin="10,5,0,15"/>
+                    <TextBlock Text="MY RESULTS" Margin="10,5,0,15"/>
                 </WrapPanel>
             </Button>
 
@@ -78,7 +78,7 @@
                     Click="Btn_Hostel_Click">
                 <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Image Source="/IMAGES/Student hostel.jpg" Margin="-39,0,0,0"/>
-                    <TextBlock Text="HOSTEL" Margin="10,5,0,15"/>
+                    <TextBlock Text="ACCOMODATION" Margin="10,5,0,15"/>
                 </WrapPanel>
             </Button>
 

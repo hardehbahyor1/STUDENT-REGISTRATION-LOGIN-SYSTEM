@@ -3,6 +3,7 @@ using STUDENT_REGISTRATION_LOGIN_SYSTEM.VIEWMODEL;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Policy;
 using System.Text.Json;
 using System.Windows;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -12,17 +13,19 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE
     class Database_ConnectionPort
     {
         private static readonly string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "StudentList.json");
-        
+
         //Retrieve information from the Database
         public static List<StudentInfo> LoadData()
         {
-            if(!File.Exists(filepath))
-                return [];
+            if (!File.Exists(filepath))
+                return new List<StudentInfo>();
+
             string JsonFIle = File.ReadAllText(filepath);
 
-            if(string.IsNullOrEmpty(JsonFIle))
+            if (string.IsNullOrEmpty(JsonFIle))
                 return new List<StudentInfo>();
-            return JsonSerializer.Deserialize<List<StudentInfo>>(JsonFIle) ?? [];
+
+            return JsonSerializer.Deserialize<List<StudentInfo>>(JsonFIle) ?? new List<StudentInfo>();
         }
 
         //SAVE information from the Database
@@ -37,15 +40,35 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE
                 {
                     WriteIndented = true,
                 }; // this is used for formatting, i.e the way the information should be structured in the .json file
+
                 string json = JsonSerializer.Serialize(_save_Data, formatstyle);
                 File.WriteAllText(filepath, json);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show($"Error Saving: \n {e.Message}");
             }
-            
+
         }
-            
+
+        public static void UpdateStudent(StudentInfo updatedStudent)
+        {
+            var students = LoadData();
+
+            var index = students.FindIndex(s => s.Stdnt_ID == updatedStudent.Stdnt_ID);
+
+            if (index != -1)
+            {
+                students[index] = updatedStudent;
+            }
+            else
+            {
+                MessageBox.Show("Student not found for update.");
+                return;
+            }
+
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            File.WriteAllText(filepath, JsonSerializer.Serialize(students, options));
+        }
     }
 }

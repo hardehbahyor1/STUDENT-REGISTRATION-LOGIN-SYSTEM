@@ -54,7 +54,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
 
         private void Btn_RegisterCourse_Click(object sender, RoutedEventArgs e)
         {
-            UC_RegisterCourse viewCourse = new UC_RegisterCourse();
+            UC_RegisterCourse viewCourse = new UC_RegisterCourse(_currentUser);
             string title = "Course Registration";
             string message = "Course registration is currently unavailable. Please check back later.";
             MessageBoxResult result = MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Information);

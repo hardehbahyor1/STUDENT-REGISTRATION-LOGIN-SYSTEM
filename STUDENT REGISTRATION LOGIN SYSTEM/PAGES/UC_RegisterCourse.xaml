@@ -6,23 +6,119 @@
              xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Image Source="/IMAGES/UC VIEW IMAGES/student image 2.jpg" 
-               Opacity="0.2" 
-               Stretch="UniformToFill"/>
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="TargetCaptionStyle">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="Foreground" Value="DarkGreen"/>
+        </Style>
 
-        <Border BorderBrush="Green" 
-                BorderThickness="2" 
-                Margin="15"
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Center">
+        <Style TargetType="TextBox" x:Key="TxtboxStyleResource">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="0,0,15,10"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
 
-            <Label Content="UNDER DEVELOPMENT" 
-                   FontSize="40" 
-                   FontWeight="Bold" 
-                   Background="Green" 
-                   Foreground="White"
-                   Padding="20"/>
-        </Border>
-    </Grid>
+        <Style TargetType="TextBlock" x:Key="LabelStyle">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,5,0,2"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Border BorderBrush="Green" 
+            BorderThickness="3" 
+            Margin="15"
+            Padding="15"
+            CornerRadius="10"
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Stretch"
+            Background="White" Opacity="0.9">
+        <Grid>
+            <Image Source="/IMAGES/UC VIEW IMAGES/student image 2.jpg" 
+                   Opacity="0.2"
+                   Stretch="UniformToFill"
+                   Margin="5"/>
+
+            <StackPanel Orientation="Vertical" Margin="25">
+                <TextBlock Text="Subject Registration Guidelines" 
+                           Style="{StaticResource TargetCaptionStyle}"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20"/>
+
+                <TextBlock TextWrapping="Wrap" LineHeight="25" FontSize="16">
+                    <Run Text="Please read carefully before proceeding:" FontWeight="SemiBold"/><LineBreak/><LineBreak/>
+                    
+                    <Run Text="1. Subject Limits: " FontWeight="Bold" Foreground="DarkGreen"/>
+                    <Run Text="You must select a minimum of "/>
+                    <Run Text="6" FontWeight="Bold"/>
+                    <Run Text=" and a maximum of "/>
+                    <Run Text="9" FontWeight="Bold"/>
+                    <Run Text=" subjects."/><LineBreak/>
+                    
+                    <Run Text="2. Teacher Approval: " FontWeight="Bold" Foreground="DarkGreen"/>
+                    <Run Text="Ensure your subject choices have been manually approved by your Class Teacher before registering them on this system."/><LineBreak/>
+                    
+                    <Run Text="3. Correction Policy: " FontWeight="Bold" Foreground="DarkGreen"/>
+                    <Run Text="Double-check your entries. Any modifications made after submission will attract a mandatory "/>
+                    <Run Text="correction fee" FontWeight="Bold" Foreground="DarkRed"/>
+                    <Run Text=", payable directly to the Principal's Office."/>
+                </TextBlock>
+
+                <!-- Subject Selection Area -->
+                <StackPanel Margin="20,10,20,20">
+                    <TextBlock Text="Select Your Subjects:" 
+               Style="{StaticResource TargetCaptionStyle}" 
+               Margin="0,0,0,10"/>
+
+                    <!-- The ListBox will automatically generate a CheckBox for every subject in the dictionary -->
+                    <ListBox x:Name="CourseListBox" 
+                             BorderThickness="1"
+                             BorderBrush="#CCCCCC"
+                             Background="#FAFAFA"
+                             Padding="10"
+                             Height="250"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox 
+                                          x:Name="Checkbox_ListofSubject"
+                                           Content="{Binding}"
+                                          FontSize="16" 
+                                          Margin="5,8" 
+                                          Cursor="Hand"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <Button x:Name="BtnSubmitRegistration"
+                            Content="Submit Registration" 
+                            Width="200" Height="40"
+                            Click="BtnSubmitRegistration_Click"
+                            Margin="0,20,0,0" 
+                            ToolTip="Ensure you have selected between 6 and 9 approved subjects before submitting."
+                            Background="DarkGreen" Foreground="White" FontSize="16" FontWeight="Bold"
+                            IsDefault="True"/>
+                </StackPanel>
+
+                <ListBox x:Name="DisplayRegSubject_Listbox" BorderThickness="5" AllowDrop="True"
+                          Visibility="Collapsed" BorderBrush="Gray" MinHeight="100">
+                    
+                </ListBox>
+
+                <!--Selected Courses DataGrid-->
+                <DataGrid x:Name="Grid_DisplayRegSubject" BorderThickness="3" Height="250" Width="400"
+                          AutoGenerateColumns="False">
+                    <!--ItemsSource="{Binding Student.Courses, UpdateSourceTrigger=PropertyChanged}"-->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header= "SUBJECT" Binding="{Binding}" Width="auto"/>
+                        <DataGridTextColumn Header="SCORE:" Width="AUTO"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+    </Border>
 </UserControl>
