@@ -115,7 +115,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.VIEWMODEL
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        // data saving module definition
         public void SaveAdminData(AdminViewmodel admin)
         {
             try

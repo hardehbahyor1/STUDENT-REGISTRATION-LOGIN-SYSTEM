@@ -56,7 +56,8 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
         {
             UC_RegisterCourse viewCourse = new UC_RegisterCourse(_currentUser);
             string title = "Course Registration";
-            string message = "Course registration is currently unavailable. Please check back later.";
+            string message = "Once You've REGISTERED your subject, discard RE-Registering after Login. \n" +
+                " Course registration is still UNDER DEVELOPMENT. Please check back later...";
             MessageBoxResult result = MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Information);
             if (result == MessageBoxResult.OK)
             {
