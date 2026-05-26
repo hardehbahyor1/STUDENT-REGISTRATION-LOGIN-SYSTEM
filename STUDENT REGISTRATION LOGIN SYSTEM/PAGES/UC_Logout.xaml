@@ -6,23 +6,33 @@
              xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Image Source="/IMAGES/UC VIEW IMAGES/student image 5jpg.jpg" 
-       Opacity="0.2" 
-       Stretch="UniformToFill"/>
 
-        <Border BorderBrush="Green" 
-        BorderThickness="2" 
-        Margin="15"
-        VerticalAlignment="Center" 
-        HorizontalAlignment="Center">
+    <Border BorderBrush="Green" 
+            BorderThickness="3" 
+            Margin="15"
+            Padding="15"
+            CornerRadius="10"
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Stretch"
+            Background="White" Opacity="0.9">
 
-            <Label Content="UNDER DEVELOPMENT" 
-           FontSize="40" 
-           FontWeight="Bold" 
-           Background="Green" 
-           Foreground="White"
-           Padding="20"/>
-        </Border>
-    </Grid>
+        <StackPanel Width="500">
+
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/IMAGES/UC VIEW IMAGES/student image 5jpg.jpg" Opacity="0.5"/>
+            </StackPanel.Background>
+
+            <TextBlock Text="LOGUOUT YOUR ACCOUNT?" FontFamily="Cascadia Mono" FontWeight="Bold"
+               FontSize="30" Margin="0,20,0,0"
+               Background="Green" Foreground="White"
+               HorizontalAlignment="Center"/>
+            
+            <Button x:Name="BtnLogout" Content="LOGOUT" FontSize="30" FontWeight="Bold" 
+                Width="200" Background="Red" Foreground="White"
+                    Click="BtnLogout_Click" Margin="0,30,0,0"
+                ToolTip="Click the Button to Successfully Logout Your Account"
+                        ToolTipService.InitialShowDelay="5"
+             />
+            </StackPanel>
+    </Border>
 </UserControl>

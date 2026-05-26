@@ -24,7 +24,8 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
             InitializeComponent();
             DataContext = new StudentViewModel();
         }
-        
+
+
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             var vm = DataContext as StudentViewModel;
@@ -76,6 +77,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
 
         private void BtnForget_Password_Click(object sender, RoutedEventArgs e)
         {
+            //NavigationService.Navigate(new LoginPage());
             NavigationService.Navigate(new Forget_Password_Page());
         }
     }
