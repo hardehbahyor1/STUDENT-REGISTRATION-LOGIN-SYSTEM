@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="STUDENT BIODATA CAPTURE MANAGEMENT SYSTEM SBCMS" 
+        Title="SCHOOL INFORMATION MANAGEMENT SYSTEM SBCMS"
+        FontSize="20"
         Height="600" 
         Width="800"  
         MinHeight="500"
         MinWidth="700"
-        FontWeight="ExtraBlack">
-    
+        FontWeight="Bold">
+
     <Grid x:Name="mainGrid">
         <Grid.Background>
             <ImageBrush ImageSource="/IMAGES/photo-1516979187457-637abb4f9353.jpeg" Stretch="UniformToFill"/>
         </Grid.Background>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
-    
 </Window>

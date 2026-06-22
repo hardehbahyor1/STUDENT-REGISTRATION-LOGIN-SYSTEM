@@ -58,7 +58,7 @@
                     Click="Btn_RegisterCourse_Click">
                 <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Image Source="/IMAGES/-registration-icon-class-register-icon-png.png"/>
-                    <TextBlock Text="CLASS SUBJECT" Margin="10,5,0,15"/>
+                    <TextBlock Text="REGISTER SUBJECT" Margin="10,5,0,15"/>
                 </WrapPanel>
             </Button>
 
@@ -105,11 +105,11 @@
         <Border Grid.Column="1" CornerRadius="10" Margin="10" >
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- 🔝 TOP USER INFO -->
+                <!-- TOP USER INFO -->
                 <StackPanel Background="#E8F5E9">
                     <TextBlock x:Name="TxtWelcome"
                        FontSize="18"
@@ -120,7 +120,7 @@
                        FontSize="13"/>
                 </StackPanel>
 
-                <!-- 📄 MAIN CONTENT -->
+                <!-- MAIN CONTENT -->
                 <ScrollViewer Grid.Row="1">
                     <ContentControl x:Name="MainContentFrame"/>
                 </ScrollViewer>

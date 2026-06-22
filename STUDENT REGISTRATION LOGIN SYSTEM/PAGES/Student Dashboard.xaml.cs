@@ -5,30 +5,26 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
 {
-    /// <summary>
-    /// Interaction logic for Student_Dashboard.xaml
-    /// </summary>
     public partial class Student_Dashboard : Page
     {
-        private StudentInfo _currentUser;
-        public Student_Dashboard(StudentInfo user)
+        private StudentInfo currentUser;
+        public Student_Dashboard()
         {
             InitializeComponent();
-            _currentUser = user;
-
-            TxtWelcome.Text = $"Welcome, {_currentUser.Fname} (ID: {_currentUser.Stdnt_ID}) Nationality: {_currentUser.Country}";
-
-            MainContentFrame.Content = new UC_UpdateBiodata(_currentUser); // the default page that will be shown when the dashboard loads
+            var user = UserSession.CurrentUser; // or use this //_currentUser = user;
+            currentUser = user;
+            if (user != null)
+            {
+                TxtWelcome.Text = $"Welcome, {user.Fname} (ID: {user.Stdnt_ID}) GENDER: {user.Gender.ToLower()} CLASS: {user.Stdnt_Class.ToLower()}";
+            }
+            
+            MainContentFrame.Content = new UC_UpdateBiodata(); // the default page that will be shown when the dashboard loads
         } // Overloaded constructor to accept a StudentInfo object, allowing personalized content based on the logged-in user
 
       /*  
@@ -54,7 +50,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
 
         private void Btn_RegisterCourse_Click(object sender, RoutedEventArgs e)
         {
-            UC_RegisterCourse viewCourse = new UC_RegisterCourse(_currentUser);
+            UC_RegisterCourse viewCourse = new UC_RegisterCourse(currentUser);
             string title = "Course Registration";
             string message = "Once You've REGISTERED your subject, discard RE-Registering after Login. \n" +
                 " Course registration is still UNDER DEVELOPMENT. Please check back later...";

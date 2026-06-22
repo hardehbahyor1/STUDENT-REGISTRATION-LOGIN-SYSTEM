@@ -9,108 +9,441 @@
       Title="Admin_Create_Account">
 
     <Grid x:Name="Grid_AdminAccount">
-        <Border Width="600" Padding="25" CornerRadius="10" 
+        <Border Width="1000" Padding="25" CornerRadius="10" 
                 HorizontalAlignment="Center" VerticalAlignment="Center">
-        </Border>
-
-        <StackPanel>
-            <!-- Title-->
-            <TextBlock Text="Admin Account Creation"
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <!-- Title-->
+                    <TextBlock Text="STAFF BIO-DATA CAPTURE AND PROFILE CREATION DASHBOARD "
                        FontSize="20" FontFamily="Arial Black" FontWeight="Bold"
                        HorizontalAlignment="Center" Margin="0,5,0,20"
                        Foreground="Green" Background="White"/>
-            
-            <!-- Name Section-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                    <!-- PERSONAL INFO SECTION-->
+                    <TextBlock Text="PERSONAL INFORMATION"
+                               FontWeight="Bold" FontSize="16"
+                               Background="Transparent" Foreground="Green"
+                               Width="270" VerticalAlignment="Center" HorizontalAlignment="Left"
+                               Margin="0,15,0,10"
+                               />
 
-                <!--Labels -->
-                    
-                <TextBlock Text="Firstname" Grid.Column="0" Grid.Row="0" 
-                           FontStyle="Normal" FontWeight="Bold" Margin="5" Foreground="Green"/>
-                    
-                <TextBlock Text="Middlename" Grid.Column="1" Grid.Row="0" 
-                            FontStyle="Normal" FontWeight="Bold" Margin="5" Foreground="Green"/>
-                    
-                <TextBlock Text="Lastname" Grid.Column="2" Grid.Row="0" 
-                        FontStyle="Normal" FontWeight="Bold" Margin="5" Foreground="Green"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                <!--Name Section-->
-                    
-                <TextBox Name="txtbox_AdminFname" Grid.Row="1" Grid.Column="0" Margin="5"
-                         Height="30" VerticalAlignment="Center"
-                         Text="{Binding Fname, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                <TextBox Name="txtbox_AdminMname" Grid.Row="1" Grid.Column="1" Margin="5"
-                         Height="30" VerticalAlignment="Center"
-                         Text="{Binding Mname, UpdateSourceTrigger=PropertyChanged}"/>
+                        <!--Labels -->
 
-                <TextBox Name="txtbox_AdminLname" Grid.Row="1" Grid.Column="2" Margin="6,0,4,0"
-                         Height="30" VerticalAlignment="Center"
-                         Text="{Binding  Lname, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="Firstname" Grid.Column="0" Grid.Row="0" FontSize="14" 
+                                  FontStyle="Normal" FontWeight="Bold" Margin="5" Foreground="Green"/>
 
-                <TextBlock Text="Department" Grid.Row="2" Margin="10" Foreground="Green" FontWeight="Bold" 
-                           FontStyle="Normal" />
-            </Grid>
+                        <TextBlock Text="Middlename" Grid.Column="1" Grid.Row="0" FontSize="14"
+                                  FontStyle="Normal" FontWeight="Bold" Margin="5" Foreground="Green"/>
 
-            <ComboBox Name="CmbboxAdminDept" IsEnabled="True" Height="35" Margin="5" 
-                      ToolTip="Choose the Appropriate Department"
-                      VerticalContentAlignment="Center"
-                      SelectedValuePath="content"
-                      
-                      SelectedItem="{Binding Admin_Dept, UpdateSourceTrigger = PropertyChanged}">
-                <ComboBoxItem>SCIENCE</ComboBoxItem>
-                <ComboBoxItem> COMMERICAL</ComboBoxItem>
-                <ComboBoxItem> ARTS </ComboBoxItem>
-                <ComboBoxItem> ADMINISTRATION </ComboBoxItem>
-                <ComboBoxItem> FINANCE </ComboBoxItem>
-                <ComboBoxItem> STUDENT AFFAIRS </ComboBoxItem>
-                <ComboBoxItem>HEALTH</ComboBoxItem>
-                <ComboBoxItem> ICT /LAB </ComboBoxItem>
-            </ComboBox>
+                        <TextBlock Text="Lastname" Grid.Column="2" Grid.Row="0" FontSize="14"
+                                  FontStyle="Normal" FontWeight="Bold" Margin="5" Foreground="Green"/>
 
-            <!-- Username & Password -->
-            
-            <Grid Margin="10" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+                        <TextBlock Text="Gender" Grid.Column="0" Grid.Row="2" FontStyle="Normal" 
+                                  FontWeight="Bold" FontSize="14" Margin="5" Foreground="Green"/>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                        <TextBlock Text="Date Of Birth" Grid.Column="1" Grid.Row="2" FontSize="14"
+                                  FontStyle="Normal" FontWeight="Bold" Margin="5" Foreground="Green"/>
 
-                <TextBlock Text="Username" Margin="5" Foreground="Green" FontStyle="Normal" FontWeight="Bold"
-                           Grid.Row="0" Grid.Column="0"/>
-                <TextBox x:Name="txtboxAdminUsername" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Height="30"
-                         Text="{Binding Admin_Uname, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="Relationship Status" Grid.Column="2" Grid.Row="2" FontSize="14" 
+                                  FontStyle="Normal" FontWeight="Bold" Margin="5" Foreground="Green"/>
 
-                <TextBlock Text="Password" Margin="5" Foreground="Green" FontWeight="Bold" FontStyle="Normal"
-                           Grid.Column="1" Grid.Row="0"/>
-                <TextBox x:Name="txtboxAdminPassword" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="30"
-                         Text="{Binding Admin_Password, UpdateSourceTrigger=PropertyChanged}"/>
-            </Grid>
+                        <!--Name Section-->
 
-            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button x:Name="BtnCreatAccount" Click="BtnCreatAccount_Click"
-                        ToolTip="Click to Submit your Form">
-                    <Image Source="/IMAGES/Submit bttton.jpg" Width="100"/>
-                    
-                </Button>
-                
-            </WrapPanel>
-        </StackPanel>
+                        <TextBox Name="txtbox_AdminFname" Grid.Row="1" Grid.Column="0" Margin="5"
+                                Height="30" VerticalAlignment="Center" FontSize="20"
+                                Text="{Binding admin.AdminFirstName, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox Name="txtbox_AdminMname" Grid.Row="1" Grid.Column="1" Margin="5"
+                                Height="30" VerticalAlignment="Center" FontSize="20"
+                                Text="{Binding admin.AdminMiddlename, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox Name="txtbox_AdminLname" Grid.Row="1" Grid.Column="2" Margin="6,0,4,0"
+                                Height="30" VerticalAlignment="Center" FontSize="20"
+                                Text="{Binding admin.AdminLastName, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <ComboBox x:Name="Cmbox_AdminGender" Grid.Row="3" Grid.Column="0" Margin="5" FontSize="20"
+                                SelectedValue ="{Binding admin.AdminGender, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectedValuePath="Content">
+                            <ComboBoxItem>MALE</ComboBoxItem>
+                            <ComboBoxItem>FEMALE</ComboBoxItem>
+                        </ComboBox>
+
+                        <DatePicker Name="txtbox_AdminDOB" Grid.Row="3" Grid.Column="1" Margin="5" Height="30" FontSize="20"
+                                VerticalAlignment="Center" SelectedDateFormat="Long" SelectedDate="{Binding admin.AdminDOB, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox x:Name="txtBox_RelationshipStatus" Grid.Row="3" Grid.Column="2" Margin="6,0,4,0" Height="30" 
+                                    VerticalAlignment="Center" FontSize="20"
+                                    Text="{Binding admin.AdminMaritalStatus, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+
+                    <TextBlock Text="CONTACT INFORMATION"
+                            FontWeight="Bold" FontSize="16" Background="Transparent" Foreground="Green"
+                            Width="270" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,15,0,5"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Labels -->
+
+                        <TextBlock Text="National ID NO:" Grid.Column="0" Grid.Row="0" 
+                           FontStyle="Normal" FontWeight="Bold" FontSize="14" Margin="5" Foreground="Green"/>
+
+                        <TextBlock Text="Religion" Grid.Column="1" Grid.Row="0" 
+                           FontStyle="Normal" FontWeight="Bold" Margin="5" FontSize="14" Foreground="Green"/>
+
+                        <TextBlock Text="Residential Address" Grid.Column="2" Grid.Row="0" 
+                           FontStyle="Normal" FontWeight="Bold" Margin="5" FontSize="14" Foreground="Green"/>
+
+                        <!--Name Section-->
+                        <TextBox Name="txtbox_NationalID" Grid.Row="1" Grid.Column="0" Margin="5" Height="30" VerticalAlignment="Center" 
+                             FontSize="20" IsEnabled="True" Text="{Binding admin.National_ID, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <ComboBox x:Name="Cmbbox_religion" Grid.Column="1" Grid.Row="1" Margin="5" FontFamily="Times New Roman" FontSize="20"
+                                  VerticalAlignment="Center" SelectedValuePath="Content"
+                                  SelectedValue ="{Binding admin.AdminReligion, UpdateSourceTrigger=PropertyChanged}">
+                            <ComboBoxItem>ISLAM</ComboBoxItem>
+                            <ComboBoxItem>HINDUSSIM</ComboBoxItem>
+                            <ComboBoxItem>CHRISTIANITY</ComboBoxItem>
+                            <ComboBoxItem>TRADITIONAL WORSHIP</ComboBoxItem>
+                        </ComboBox>
+
+                        <TextBox Name="txtbox_Address" Grid.Row="1" Grid.Column="2" Margin="6,0,4,0" Height="30" 
+                             VerticalAlignment="Center" FontSize="20" 
+                             Text="{Binding admin.Admin_ResidentialAddress, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+
+                    <Grid Margin="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Label -->
+
+                        <TextBlock Text="Department" Grid.Row="0" Grid.Column="0" Margin="10" Foreground="Green" FontWeight="Bold" 
+                           FontStyle="Normal" FontSize="14"/>
+
+                        <TextBlock Text="Mobile Number" Grid.Row="0" Grid.Column="1"  Margin="10" Foreground="Green" FontWeight="Bold"
+                               FontStyle="Normal" FontSize="14"/>
+                        <TextBlock Text="Email Address" Grid.Row="0" Grid.Column="2" Margin="10" Foreground="Green" FontWeight="Bold"
+                               FontStyle="Normal" FontSize="14"/>
+
+                        <!--Department, Mobile & Email -->
+                        <ComboBox Name="Cmbbox"  Grid.Row="1" Grid.Column="0" Height="35" Margin="5" 
+                                  ToolTip="Choose the Appropriate Department" FontSize="20" 
+                                  VerticalContentAlignment="Center"
+                                  SelectedValuePath="Content"
+                                  IsEnabled="False">
+                            <ComboBoxItem>ARTS</ComboBoxItem>
+                            <ComboBoxItem>ADMINISTRATION</ComboBoxItem>
+                        </ComboBox>
+
+                        <TextBox x:Name="Txtbox_Mobile" Grid.Row="1" Grid.Column="1"
+                           Height="30" VerticalAlignment="Center" Margin="5" FontSize="20"
+                           Text="{Binding admin.AdminMobile_No, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox x:Name="Txtbox_Email" Grid.Row="1" Grid.Column="2" FontSize="20" Height="30" 
+                             VerticalAlignment="Center" Margin="5"  TextWrapping="Wrap"
+                             Text="{Binding admin.AdminEmail, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <!-- COUNTRY, STATE & LGA -->
+
+                        <TextBlock Text="Country" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Foreground="Green" FontWeight="Bold"
+                           FontStyle="Normal" FontSize="14" Margin="5"/>
+
+                        <TextBlock Text="State Of Origin" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Foreground="Green" FontWeight="Bold"
+                           FontStyle="Normal" FontSize="14" Margin="5"/>
+
+                        <TextBlock Text="Local Govt Area" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Foreground="Green" FontWeight="Bold"
+                           FontStyle="Normal" FontSize="14" Margin="5"/>
+
+                        <ComboBox x:Name="Cmbox_Country" Grid.Row="3" Grid.Column="0" Margin="5" VerticalContentAlignment="Center"
+                            BorderThickness="2" BorderBrush="White" Foreground="Black"  FontSize="20"
+                            SelectionChanged="Cmbox_Country_SelectionChanged"
+                            SelectedItem="{Binding admin.AdminCountry, UpdateSourceTrigger=PropertyChanged}">
+                        </ComboBox>
+
+                        <ComboBox Name="Cmbox_State" Grid.Row="3" Grid.Column="1" Margin="5" VerticalContentAlignment="Center"
+                                BorderThickness="2" Foreground="Black" BorderBrush="White" FontSize="20"
+                                SelectedItem="{Binding admin.AdminState, UpdateSourceTrigger=PropertyChanged}"
+                                SelectionChanged="Cmbox_State_SelectionChanged">
+                        </ComboBox>
+
+                        <ComboBox x:Name="Cmbox_LGA" Grid.Row="3" Grid.Column="2" Margin="5" VerticalContentAlignment="Center"
+                                BorderThickness="2" Foreground="Black" BorderBrush="White" FontSize="20"
+                                SelectedItem="{Binding admin.AdminLGA, UpdateSourceTrigger=PropertyChanged}" 
+                        ></ComboBox>
+                    </Grid>
+
+                    <!--Next Of Kin Information -->
+
+                    <TextBlock Text="NEXT OF KIN INFORMATION" FontWeight="Bold" Background="Transparent"
+                               Foreground="Green" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"
+                               Margin=" 0,15,0,0"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="AUto"/>
+                            <RowDefinition Height="AUto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Next Of Kin Name:" FontSize="14" FontWeight="Bold" FontStyle="Normal" Foreground="Green" Margin="5"
+                                   Grid.Column="0" Grid.Row="0"/>
+                        <TextBlock Text="Relationship:" FontSize="14" FontStyle="Normal" FontWeight="Bold" Foreground="Green" Margin="5,0,0,0"
+                                   Grid.Column="1" Grid.Row="0"/>
+                        <TextBlock Text="Mobile Number:" FontSize="14" FontStyle="Normal" FontWeight="Bold" Foreground="Green" Margin="5,0,0,0"
+                                   Grid.Column="2" Grid.Row="0"/>
+                        <TextBlock Text=" Residential Addres:" FontSize="14" FontStyle="Normal" FontWeight="Bold" Foreground="Green" Margin="5,5,0,0"
+                                   Grid.Column="0" Grid.Row="2"/>
+                        <TextBlock Text="Nationality:" FontSize="14" FontWeight="bold" FontStyle="Normal" Foreground="Green" Margin="5,5,0,0"
+                                   Grid.Column="1" Grid.Row="2"/>
+                        <TextBlock Text="Email Address:" FontSize="14" FontStyle="Normal" FontWeight="Bold" Foreground="Green" Margin="5,5,0,0"
+                                   Grid.Column="2" Grid.Row="2"/>
+
+                        <TextBox x:Name="txtbox_kinName" FontFamily="Times New Roman" FontSize="20" TextWrapping="Wrap" Height="30"
+                                 Grid.Column="0" Grid.Row="1" Margin="5" 
+                                 Text="{Binding admin.NextOfKin_Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox x:Name="txtbox_kinRelationship" FontFamily="Times New Roman" FontSize="20" TextWrapping="Wrap" Height="30"
+                                 Grid.Column="1" Grid.Row="1" Margin="5"
+                                 ToolTip="BROTHER / SISTER / UNCLE / HUSBAND/ PARENT/ Children / Specity the Correct One ."
+                                 ToolTipService.ShowDuration="5000"
+                                 Text="{Binding admin.NextOfKin_Relationship, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox x:Name="txtbox_kinMobile" FontFamily="Times New Roman" Height="30" TextWrapping="Wrap" FontSize="20"
+                                   Grid.Column="2" Grid.Row="1" Margin="5"
+                                   Text="{Binding admin.NextOfKin_Mobile, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox x:Name="txtbox_KinAddress" FontFamily="Times New Roman" FontSize="20" TextWrapping="Wrap" Height="30" Margin="5"
+                                 FontStyle="Normal" Grid.Row="3" Grid.Column="0"
+                                 Text="{ Binding admin.NextOfKin_Address, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox x:Name="txtbox_KinNationality" FontFamily="Times New Roman" FontSize="20" FontStyle="Normal" Height="30"
+                                 Margin="5,5,0,0" Grid.Column="1" Grid.Row="3"
+                                 Text="{Binding admin.NextOfKin_Nationality, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox x:Name="txtbox_KinEmail" FontFamily="Times New Roman" FontStyle="Normal" FontSize="20" Margin="5,5,0,0" 
+                                 Height="30" Grid.Column="2" Grid.Row="3"
+                                 Text="{Binding admin.NextOfKin_email, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+
+                    <!-- Education Background -->
+                    <TextBlock Text="EDUCATIONAL QUALIFICATION INFORMATION"
+                           FontWeight="Bold" FontSize="16" Background="Transparent" Foreground="Green"
+                           Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Left"
+                           Margin="0,15,0,0"/>
+
+                    <Grid Margin="15">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- label-->
+                        <TextBlock Text="Qualification" Grid.Row="0" Grid.Column="0" Margin="5" FontWeight="Bold" FontStyle="Normal"
+                           FontSize="14" Foreground="Green"/>
+
+                        <TextBlock Text="Discipline" Grid.Row="0" Grid.Column="1" Margin="5" FontWeight="Bold" FontStyle="Normal"
+                           FontSize="14" Foreground="Green"/>
+
+                        <TextBlock Text="Year Of Graduation" Grid.Row="0" Grid.Column="2" Margin="5" FontWeight="Bold" FontStyle="Normal"
+                           FontSize="14" Foreground="Green"/>
+
+                        <ComboBox x:Name="Cmbox_Qualification" Grid.Row="1" Grid.Column="0" Margin="5,6,5,4" FontSize="20"
+                              SelectedValue ="{Binding admin.AdminQualification, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedValuePath="Content"
+                              ToolTip="If you hold multiple qualifications, please select the highest level completed."
+                              ToolTipService.ShowDuration="5000">
+
+                            <ComboBoxItem>FSLC / O'Level</ComboBoxItem>
+                            <ComboBoxItem>OND / ND /NCE</ComboBoxItem>
+                            <ComboBoxItem>B.Sc / B.Ed B.A</ComboBoxItem>
+                            <ComboBoxItem>B.Tech / B.Eng</ComboBoxItem>
+                            <ComboBoxItem>M.Sc/ M.Ed / M.A</ComboBoxItem>
+                            <ComboBoxItem>Professional Certificate</ComboBoxItem>
+                            <ComboBoxItem>Ph.D</ComboBoxItem>
+                        </ComboBox>
+
+                        <TextBox x:Name="Txtbox_Discipline" Grid.Row="1" Grid.Column="1" Margin="5" Height="30" FontSize="20"
+                        Text="{Binding admin.AdminCourseOfStudy, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" 
+                        VerticalAlignment="Center" FontStyle="Normal" Width="Auto" FontFamily="Times New Roman" />
+
+                        <DatePicker x:Name="Txtbox_YearOfgraduation" Grid.Row="1" Grid.Column="2" Margin="5" Width="Auto" Height="30"
+                         SelectedDate="{Binding admin.AdminYearOfGraduation, StringFormat=yyyy}" 
+                         VerticalAlignment="Center" FontStyle="Normal" />
+
+                        <TextBlock Text="Institution Attended" Grid.Column="0" Grid.Row="2" FontWeight="Bold" Foreground="Green" FontStyle="Normal" 
+                            FontSize="14" Margin="5"/>
+
+                        <TextBox x:Name="Txtbox_InstitutionAttended" Grid.Row="3" Grid.Column="0" Height="30" 
+                             Text="{Binding admin.Admin_InstitutionAttended, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="20" FontFamily="Times New Roman" Width="Auto" TextWrapping="Wrap"/>
+                    </Grid>
+
+                    <!-- Username & Password -->
+                    <TextBlock Text="EMPLOYMENT INFORMATION" Background="Transparent" Foreground="Green" FontSize="16"
+                               Margin="0,15,0,0" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                    <Grid Margin="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Department" Margin="5" Foreground="Green" FontStyle="Normal" FontWeight="Bold"
+                            FontSize="14" Grid.Row="0" Grid.Column="0"/>
+
+                        <TextBlock Text="Date EMployed" Margin="5" Foreground="Green" FontWeight="Bold" FontStyle="Normal"
+                            FontSize="14" Grid.Column="1" Grid.Row="0"/>
+
+                        <ComboBox x:Name="CmbboxAdminDept"  Grid.Row="1" Grid.Column="0" IsEnabled="True" Height="35" Margin="5" 
+                            ToolTip="Choose the Appropriate Department" FontSize="20" 
+                            VerticalContentAlignment="Center"
+                            SelectedValuePath="Content"
+                            SelectedValue= "{Binding admin.AdminDept, UpdateSourceTrigger = PropertyChanged}"
+                            SelectionChanged="CmbboxAdminDept_SelectionChanged">
+
+                            <ComboBoxItem>ARTS</ComboBoxItem>
+                            <ComboBoxItem>ADMIN</ComboBoxItem>
+                            <ComboBoxItem>COM</ComboBoxItem>
+                            <ComboBoxItem>ICT</ComboBoxItem>
+                            <ComboBoxItem>HEALTH</ComboBoxItem>
+                            <ComboBoxItem>SCI</ComboBoxItem>
+                        </ComboBox>
+
+                        <DatePicker x:Name="datepick_YearEmployed" Grid.Row="1" Grid.Column="1" Margin="5,5,10,0" 
+                            VerticalAlignment="Center" Height="30" 
+                            SelectedDate="{Binding admin.Admin_DateEmployed, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+                        <TextBlock Text="Staff ID" Grid.Row="2" Grid.Column="0"  Margin="5,0,0,0" FontWeight="Bold" FontSize="16" FontStyle="Normal"
+                           Foreground="Green" VerticalAlignment="Center"/>
+
+                        <TextBox x:Name="Txtbox_StaffId" Grid.Row="3" Grid.Column="0" IsEnabled="False" FontWeight="Bold" 
+                    Background="White" Width="Auto" Height="50" FontSize="20"
+                    Text="{Binding admin.Admin_ID_No, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Text="Employment Type:" Grid.Row="2" Grid.Column="1" Margin="5" FontSize="16" FontWeight="Bold" FontStyle="Normal"
+                    Foreground="Green" VerticalAlignment="Center"/>
+
+                        <TextBox x:Name="txtbox_EmploymentType" Grid.Row="3" Grid.Column="1" IsEnabled="True" FontFamily="Times New Roman" 
+                                 FontStyle="Normal" FontSize="20" Width="Auto"
+                                 ToolTip="PERMANENT / CONTRACT / PART-TIME / INTERNSHIP" ToolTipService.ShowDuration="5000"
+                                 Text="{Binding admin.employmentType, UpdateSourceTrigger=PropertyChanged}"/>
+                        
+                        <TextBlock Text="Role:" Grid.Row="4" Grid.Column="0" Margin="5" FontSize="16" FontWeight="Bold" FontStyle="Normal"
+                                   Foreground="Green" VerticalAlignment="Center"/>
+
+                        <ComboBox x:Name="Cmb_role" Grid.Row="5" Grid.Column="0" FontSize="18"
+                                  VerticalContentAlignment="Center"
+                                  SelectedValuePath="Content"
+                                  SelectedValue="{Binding admin.AdminROle, UpdateSourceTrigger=PropertyChanged}">
+                            <ComboBoxItem>TUTOR</ComboBoxItem>
+                            <ComboBoxItem>ICT ADMIN</ComboBoxItem>
+                            <ComboBoxItem> ACCOUNTANT</ComboBoxItem>
+                            <ComboBoxItem> VICE PRINCIPAL</ComboBoxItem>
+                            <ComboBoxItem> BURSAR</ComboBoxItem>
+                            <ComboBoxItem> ADMIN OFFICER</ComboBoxItem>
+                        </ComboBox>
+
+                    </Grid>
+
+                    <!-- cAUTION, Submit & Homepage BUtton-->
+                    <Border BorderThickness="2" CornerRadius="4" Margin="10,20,10,15" BorderBrush="Red" >
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text= "⚠" FontSize="18" VerticalAlignment="Center" Margin="0,0,10,0"></TextBlock>
+                            <TextBlock TextWrapping="Wrap"  VerticalAlignment="Center" FontSize="20" FontFamily="Times New Roman" >
+                                <Run FontWeight="Bold" Text="Important: "/>
+                                <Run Text="Please verify all entries against official staff records. Supplying invalid or falsified data compromises the school's administrative database."/>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+
+                    <CheckBox x:Name="chkVerify" Content="I confirm that the staff information entered above is accurate."
+                              HorizontalAlignment="Center" Margin="0,0,0,20" FontWeight="Bold" 
+                              Foreground="DarkRed" FontSize="14">
+
+                    </CheckBox>
+
+                    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button x:Name="BtnCreatAccount" Click="BtnCreatAccount_Click"
+                            ToolTip="Click to Submit your Form"
+                                IsEnabled="{Binding IsChecked, ElementName=chkVerify}">
+                            <Image Source="/IMAGES/Submit bttton.jpg" Width="100"/>
+                        </Button>
+                    </WrapPanel>
+
+                    <Button x:Name="Btn_Homepage" Content="HOMEPAGE" Click="Btn_Homepage_Click" Width="250"
+                        FontSize="16" BorderThickness="2" Margin="10" 
+                        ToolTip="Click the Button to Go back to the HomePage"
+                        ToolTipService.ShowDuration ="4000">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
     </Grid>
 </Page>

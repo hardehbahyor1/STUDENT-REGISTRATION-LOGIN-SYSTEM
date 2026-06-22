@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Text.Json;
 using STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT;
 using STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE;
+using STUDENT_REGISTRATION_LOGIN_SYSTEM.UTILITIES;
 
 
 namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
@@ -37,7 +38,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
             var user = retrievedInfo.SingleOrDefault(s => s.Stdnt_ID == Accept_StdntID && s.Stdnt_Password.ToString() == Accept_Stdnt_Psswd);
 
             // --- Validation Guard Clauses ---
-            // Ensures all required student information is present before processing
             if (string.IsNullOrWhiteSpace(Accept_StdntID) || string.IsNullOrWhiteSpace(Accept_Stdnt_Psswd))
             {
                 MessageBox.Show("Ensure all fields are filled correctly",
@@ -50,7 +50,8 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
                 if (user != null)
                 {
                     MessageBox.Show("Login Successfull", "Message");
-                    NavigationService.Navigate(new Student_Dashboard(user));
+                    UserSession.ActiveSession(user);
+                    NavigationService.Navigate(new Student_Dashboard());
                 }
                 else
                 {
@@ -58,7 +59,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
                         MessageBoxImage.Exclamation);
                 }
             }
-
             
             if (vm == null || vm.Student == null)
                 {
@@ -79,6 +79,11 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
         {
             //NavigationService.Navigate(new LoginPage());
             NavigationService.Navigate(new Forget_Password_Page());
+        }
+
+        private void Btn_Homepage_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Homepage());
         }
     }
 }

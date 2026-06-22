@@ -26,7 +26,7 @@
 
                 <!-- ADMIN ID -->
                 <TextBlock Text="ADMIN ID" FontFamily="Cascadia Code" FontWeight="Bold" FontSize="20" Foreground="Green"/>
-                <TextBox x:Name="Txtbox_Admin_ID"  Height="30" Margin="0,5,0,15"/>
+                <TextBox x:Name="Txtbox_Admin_ID" FontSize="18" Foreground="Green" FontFamily="Times New Roman"  Height="30" Margin="0,5,0,15"/>
 
                 <!-- PASSWORD -->
                 <TextBlock Text="PASSWORD" Foreground="Green" FontFamily="Cascadia Code" FontWeight="Bold" FontSize="20"/>
@@ -50,8 +50,19 @@
                             ToolTip="Click to Naviage to Account Creation Page">
                     </Button>
                 </WrapPanel>
-                
-                
+                <Button x:Name="Btn_Homepage" Content="HOMEPAGE" Click="Btn_Homepage_Click" Width="250"
+                        FontSize="16" BorderThickness="2" Margin="10" 
+                        ToolTip="Click the Button to Go back to the HomePage"
+                        ToolTipService.ShowDuration ="4000">
+
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="4"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+
             </StackPanel>
         </Border>
     </Grid>

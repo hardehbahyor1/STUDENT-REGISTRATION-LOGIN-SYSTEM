@@ -3,8 +3,11 @@ using STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT;
 using STUDENT_REGISTRATION_LOGIN_SYSTEM.VIEWMODEL;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.DirectoryServices.ActiveDirectory;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,7 +18,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Collections.ObjectModel;
 using static System.Collections.Specialized.BitVector32;
 using Path = System.IO.Path;
 namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
@@ -23,25 +25,46 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
     /// <summary>
     /// Interaction logic for UC_RegisterCourse.xaml
     /// </summary>
-    public partial class UC_RegisterCourse : UserControl
+    public partial class UC_RegisterCourse : UserControl, INotifyPropertyChanged
     {
         private StudentViewModel vm;
         private StudentInfo currentuser;
+        private int NumberOfRegisteredCourse;
+        public int RegisteredCourse_Count
+        {
+            get => NumberOfRegisteredCourse;
+            set
+            {
+                if(NumberOfRegisteredCourse != value)
+                {
+                    NumberOfRegisteredCourse= value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnpropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        
         public UC_RegisterCourse()
         {
             InitializeComponent();
-
             vm = new StudentViewModel(); 
             DataContext = vm;
 
             SetSubjectRepository();
+            
             //RegisterSubject();
         }
 
         public UC_RegisterCourse(StudentInfo student) : this() // reuse first constructor
         {
             currentuser = student;
-            if(currentuser != null && currentuser.Courses != null && currentuser.Courses.Count > 0)
+            GetnumberofRegisteredCourses(); // get the total number of already registered courses.
+            if (currentuser != null && currentuser.Courses != null && currentuser.Courses.Count > 0)
             {
                 DisplayRegSubject_Listbox.ItemsSource = currentuser.Courses;
                 DisplayRegSubject_Listbox.Visibility = Visibility.Visible;
@@ -157,6 +180,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
         private void RegisterSubject()
         {
             Database_ConnectionPort.LoadData();
+            GetnumberofRegisteredCourses(); // get the number of courses REGISTRED which is displayed when user naviagte to the Register Course UI
             currentuser = Database_ConnectionPort.LoadData().Find(s =>s.Stdnt_ID == currentuser.Stdnt_ID); // Refresh current user data from database
 
             if (currentuser == null)
@@ -164,6 +188,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
                 MessageBox.Show("Connection Error", "Session expired.Please login again.", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
             }
+
             Connect_Dict_with_UI();
             var selectedSubjects = GetSelectedSubjects();
 
@@ -180,15 +205,30 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
             Database_ConnectionPort.UpdateStudent(currentuser);
 
             MessageBox.Show("Course registration successful!");
-            
-            //datagrid
-            Grid_DisplayRegSubject.ItemsSource = null;
-            Grid_DisplayRegSubject.ItemsSource = currentuser.Courses;
+        }
+
+        //Get number of registered Courses and Return the Value to the UI
+        private void GetnumberofRegisteredCourses()
+        {
+           if(currentuser != null && currentuser.Courses != null)
+            {
+                Count_RegisteredSubject_Txt.Text = currentuser.Courses.Count().ToString();
+                MessageBox.Show($"Dear {currentuser.Fname} with Identity Number{currentuser.Stdnt_ID},\n" +
+                    $"You've Registered your Preferred {currentuser.Courses.Count()} Subjects already.",
+                    "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void BtnSubmitRegistration_Click(object sender, RoutedEventArgs e)
         {
             RegisterSubject();
+        }
+
+        private void CheckResult_btn_Click(object sender, RoutedEventArgs e)
+        {
+            UC_CheckResult page = new UC_CheckResult();
+            var window = (MainWindow)Application.Current.MainWindow;
+            window.MainFrame.Navigate(page);
         }
     }
 }

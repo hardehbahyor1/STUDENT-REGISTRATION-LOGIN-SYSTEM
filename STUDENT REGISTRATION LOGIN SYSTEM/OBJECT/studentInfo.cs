@@ -16,7 +16,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
         private string ClassDepartment = string.Empty;
 
         //personal information
-        private string password;
+        private string password = string.Empty;
         private string firstname = string.Empty;
         private string lastname = string.Empty;
         private string middlename = string.Empty;
@@ -46,6 +46,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
 
         //academic information (this contains the list of subjects offered by the student per Class during Session)
         private List <string> subjects = new List<string>();  
+        private List<string> Result = new List <string> ();
 
         public string Stdnt_ID
         {
@@ -335,6 +336,21 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
+
+        public List<string> Student_Resuties
+        {
+            get => Result;
+            set
+            {
+                if(Result != value)
+                {
+                    Result = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+
+
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnpropertyChanged([CallerMemberName] string propertyName = null)
         {

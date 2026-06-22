@@ -7,12 +7,10 @@ using System.Text;
 using System.Windows;
 using System.IO;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Linq;
 using Path = System.IO.Path;
 using System.Text.Json;
+using STUDENT_REGISTRATION_LOGIN_SYSTEM.UTILITIES;
 
 namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
 {
@@ -23,23 +21,30 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
     {
         
         private StudentInfo currentUser;
+        
         private StudentViewModel vm;
         Dictionary<string, string> name = new Dictionary<string, string>();
         public UC_UpdateBiodata()
         {
             InitializeComponent();
-            DataContext = new StudentViewModel();
-        }
 
-        public UC_UpdateBiodata(StudentInfo currentUser)
-        {
-            InitializeComponent(); //It tells WPF to draw the UI elements.
-            this.currentUser = currentUser;
+            var user = UserSession.CurrentUser;
+            
             vm = new StudentViewModel();
-            vm.Student = currentUser;
+            vm.Student = user;
             DataContext = vm;
         }
-        
+
+    /*    public UC_UpdateBiodata(StudentInfo currentUser)
+            {
+                InitializeComponent(); //It tells WPF to draw the UI elements.
+                //var user = UserSession._currentUser;
+                this.currentUser = user;
+                vm = new StudentViewModel();
+                vm.Student = currentUser;
+                DataContext = vm;
+            }
+    */
         private static readonly string databaseDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "StudentList.json");
         public string ToProperCase(string input)
         {
@@ -128,4 +133,3 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
         }
     }
 }
-

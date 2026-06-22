@@ -29,14 +29,14 @@
                 <!--Student ID -->
                 <TextBlock Text="Student ID" Foreground="Green"/>
                 <TextBox x:Name="Txtbox_studentID" Height="30"
-                         Margin="0,5,0,15"
+                         Margin="0,5,0,15" Foreground="Green" FontFamily="Times New Roman" FontSize="18"
                          />
 
                 <!--Password -->
                 <TextBlock Text="Password" Foreground="Green"/>
                 <PasswordBox x:Name="PsswdBox_Studentpassword"
                              Height="20"
-                             Margin="0,5,0,20"/>
+                             Margin="0,5,0,20" Foreground="Green" FontSize="18"/>
 
                 <!--Login Button -->
                 <Button x:Name="BtnLogin" ToolTip="proceed to login" Width="100" Click="BtnLogin_Click" 
@@ -63,6 +63,18 @@
                         Background="green" Foreground="White" Width="130"
                         ToolTip="Click here to retieve your PASSWORD if forgotten, follow the steps displayed corrctly"
                         Click="BtnForget_Password_Click"    />
+
+                <Button x:Name="Btn_Homepage" Content="HOMEPAGE" Click="Btn_Homepage_Click" Width="250"
+                        FontSize="16" BorderThickness="2" Margin="10" 
+                        ToolTip="Click the Button to Go back to the HomePage"
+                        ToolTipService.ShowDuration ="4000">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="4"/>
+                        </Style>
+                    </Button.Resources>
+
+                </Button>
             </StackPanel>
         </Border>
     </Grid>

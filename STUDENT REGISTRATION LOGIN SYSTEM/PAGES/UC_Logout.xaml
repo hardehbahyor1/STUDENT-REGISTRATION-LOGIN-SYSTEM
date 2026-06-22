@@ -22,7 +22,7 @@
                 <ImageBrush ImageSource="/IMAGES/UC VIEW IMAGES/student image 5jpg.jpg" Opacity="0.5"/>
             </StackPanel.Background>
 
-            <TextBlock Text="LOGUOUT YOUR ACCOUNT?" FontFamily="Cascadia Mono" FontWeight="Bold"
+            <TextBlock Text="Log-out your Account?" FontFamily="Cascadia Mono" FontWeight="Bold"
                FontSize="30" Margin="0,20,0,0"
                Background="Green" Foreground="White"
                HorizontalAlignment="Center"/>

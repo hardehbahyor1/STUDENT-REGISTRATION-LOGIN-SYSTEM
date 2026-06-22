@@ -119,9 +119,8 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
                 MessageBox.Show("Student object is null");
                 return;
             }
-
-                        bool isDOBInvalid = vm.Student.DateOfBirth == null || vm.Student.DateOfBirth >= DateTime.Today; //verify DOB
-
+            
+            bool isDOBInvalid = vm.Student.DateOfBirth == null || vm.Student.DateOfBirth >= DateTime.Today; //verify DOB
             // --- Validation Guard Clauses ---
             // Ensures all required student information is present before processing
 
@@ -160,6 +159,11 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
                 $"PASSWORD: {vm.Student.Stdnt_Password} \n"
             );
             this.NavigationService.Navigate(new Homepage());
+        }
+
+        private void Btn_Homepage_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Homepage());
         }
     }
 }

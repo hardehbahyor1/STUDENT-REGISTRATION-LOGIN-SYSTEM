@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages.UC_ResultDashboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Image Source="/IMAGES/UC VIEW IMAGES/student result.jpg" 
+Opacity="0.2" 
+Stretch="UniformToFill"/>
+
+        <Border BorderBrush="Green" 
+ BorderThickness="2" 
+ Margin="15"
+ VerticalAlignment="Center" 
+ HorizontalAlignment="Center">
+
+            <Label Content="UNDER DEVELOPMENT" 
+    FontSize="40" 
+    FontWeight="Bold" 
+    Background="Green" 
+    Foreground="White"
+    Padding="20"/>
+        </Border>
+    </Grid>
+</UserControl>

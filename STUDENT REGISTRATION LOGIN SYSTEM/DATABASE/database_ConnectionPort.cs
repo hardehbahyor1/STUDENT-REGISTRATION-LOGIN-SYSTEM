@@ -12,7 +12,9 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE
 {
     class Database_ConnectionPort
     {
-        private static readonly string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "StudentList.json");
+        private static readonly string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "StudentList.json"); // for student
+        private static readonly string filepath2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "StaffList_DataBase.json"); // for staff
+        private static readonly string deletedStaffDatabase = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Delected Staff Record"); // for deleted Staff
 
         //Retrieve information from the Database
         public static List<StudentInfo> LoadData()
@@ -33,7 +35,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE
         {
             try
             {
-                MessageBox.Show($"Saving to:\n{filepath}");
+               // MessageBox.Show($"Saving to:\n{filepath}");
                 var _save_Data = LoadData();
                 _save_Data.Add(student);
                 var formatstyle = new JsonSerializerOptions
@@ -69,6 +71,56 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE
 
             var options = new JsonSerializerOptions { WriteIndented = true };
             File.WriteAllText(filepath, JsonSerializer.Serialize(students, options));
+        }
+
+
+        /*
+                ADMIN CRUD LOGIC DEVELOPMENT
+         */
+        public static List<Admininfo> RetrieveAdminData()
+        {
+            string AdminDatabase_Directory = filepath2;
+            if (!File.Exists(AdminDatabase_Directory))
+                return new List<Admininfo>();
+
+            string RetrievedData = File.ReadAllText(AdminDatabase_Directory);
+
+            if (string.IsNullOrEmpty(RetrievedData))
+                return new List<Admininfo>();
+
+            return JsonSerializer.Deserialize<List<Admininfo>>(RetrievedData) ?? new List<Admininfo>();
+        }
+
+        public static void SaveAdminData( Admininfo admin)
+        {
+            try
+            {
+                var _AcceptRetrievedAdmin_Data = RetrieveAdminData();
+                _AcceptRetrievedAdmin_Data.Add(admin);
+
+                var formatstyle = new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                }; // this is used for formatting, i.e the way the information should be structured in the .json file
+
+                string json = JsonSerializer.Serialize(_AcceptRetrievedAdmin_Data, formatstyle);
+                File.WriteAllText(filepath2, json);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Error Saving: \n {e.Message}");
+            }
+        }
+
+        public static void DeletedStaff()
+        {
+            if (!File.Exists(deletedStaffDatabase))
+            {
+                MessageBox.Show("Error Establishing Connection", "Information", MessageBoxButton.RetryCancel, MessageBoxImage.Exclamation);
+                return;
+            }
+
+
         }
     }
 }

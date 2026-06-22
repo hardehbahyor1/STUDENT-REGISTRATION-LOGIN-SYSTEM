@@ -11,42 +11,71 @@
     <Grid Name="grid_HomepageMainPanel">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
+        <Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel Grid.Row="0" Margin="0,50,0,40" HorizontalAlignment="Center" >
+                    <TextBlock Text="SCHOOL" FontSize="26" FontWeight="Black" Foreground="Green" HorizontalAlignment="Center"/>
+                    <TextBlock Text="PORTAL" FontSize="18" FontWeight="SemiBold" Foreground="Green" HorizontalAlignment="Center"/>
+                </StackPanel>
 
-        <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
+                <StackPanel Grid.Row="1" Margin="15,0" VerticalAlignment="Top">
+                    <Button x:Name="Btn_Register" Click="Btn_Register_Click" Margin="0,5,0,15" Height="60"
+                            Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Set up a new student account">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="200">
+                            <Image Source="/IMAGES/contact image icon.png" Width="30" Height="30" Margin="15,0,20,0"/>
+                            <TextBlock Text="REGISTER" FontSize="20" FontWeight="Bold" FontFamily="Cascadia Code" Foreground="#2E7D32" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button x:Name="Btn_Login" Click="Btn_Login_Click" Margin="0,5,0,15" Height="60" 
+                            Background="Transparent" BorderThickness="0" Cursor="Hand" 
+                            ToolTip="Enter your credentials to continue">
+                        
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="200">
+                            <Image Source="/IMAGES/login icon 3.jpg" Width="30" Height="30" Margin="15,0,20,0"/>
+                            <TextBlock Text="LOGIN" FontSize="20" FontWeight="Bold" FontFamily="Cascadia Code" Foreground="#2E7D32" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
 
-            <WrapPanel Width="auto" Height="100" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" >
-                <Image Source="/IMAGES/contact image icon.png" Width="100"/>
-                <Button x:Name="Btn_Register" Content="REGISTER" Click="Btn_Register_Click" Width="100"
-                        Foreground="Green" FontSize="20" FontWeight="Bold" FontStyle="Normal" FontFamily="Cascadia Code"
-                        ToolTip="Set up a new student account">
-                </Button>
-            </WrapPanel>
+                    <Button x:Name="Btn_AdminLogin" Click="Btn_AdminLogin_Click" Margin="0,5,0,15" Height="60" 
+                            Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Admin Access">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="200">
+                            <Image Source="/IMAGES/login icon 3.jpg" Width="30" Height="30" Margin="15,0,20,0"/>
+                            <TextBlock Text="STAFF/ADMIN" Width="Auto" FontSize="20" FontWeight="Bold" FontFamily="Cascadia Code" Foreground="#2E7D32" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        
+        <Grid Grid.Column="1">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Welcome to Student Portal"
+               FontSize="30"
+               FontWeight="Bold"
+               Foreground="#2E7D32"
+               HorizontalAlignment="Center"/>
 
-            <WrapPanel Width="auto" Height="100" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" >
-                <Image Source="/IMAGES/login icon 3.jpg" Width="100"/>
-                <Button x:Name="Btn_Login" Content="LOGIN" Click="Btn_Login_Click" Width="100"
-                        Foreground="Green" FontSize="25" FontWeight="Bold" FontStyle="Normal" FontFamily="Cascadia Code"
-                        ToolTip="Enter your credentials to continue">
-                </Button>
-            </WrapPanel>
-
-            <WrapPanel Width="auto" Height="100" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Source="/IMAGES/login image 2.jpg" Height="100" Width="100"/>
-                <Button x:Name="Btn_AdminLogin" Content="ADMIN" Click="Btn_AdminLogin_Click"
-                        Width="100"
-                        Foreground="Green" FontSize="25" FontWeight="Bold" FontStyle="Normal" FontFamily="Cascadia Code"
-                        ToolTip="Enter your credentials to continue">
-                </Button>
-            </WrapPanel>
-        </StackPanel>
-
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="auto" Margin="0,0,0,-0">
-            <TextBlock Text="Developed by Rehoboth Technologies Inc. All rights reserved"
-                           Background="LightGreen" Foreground="White" FontFamily="Cascadia Code" TextWrapping="Wrap"
-                           FontSize="20" Width="auto" TextAlignment="Center" Grid.Column="1" Margin="50,402,5,-480" 
-                       />
-        </StackPanel>
+                <TextBlock Text="Select an option from the left menu to continue"
+               FontSize="18"
+               Margin="0,10,0,0"
+               Opacity="0.8"
+               TextAlignment="Center"/>
+            </StackPanel>
+            
+            <Border VerticalAlignment="Bottom" Background="#2E7D32" Padding="12">
+                <TextBlock Text="Developed by Rehoboth Technologies Inc. | All rights reserved. © 2026"
+               Foreground="White" FontSize="14" FontFamily="Cascadia Mono"
+               HorizontalAlignment="Center" Width="Auto"/>
+            </Border>
+        </Grid>
     </Grid>
 </Page>

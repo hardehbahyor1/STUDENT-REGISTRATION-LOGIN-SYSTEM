@@ -43,12 +43,12 @@
                    Margin="5"/>
 
             <StackPanel Orientation="Vertical" Margin="25">
-                <TextBlock Text="Subject Registration Guidelines" 
+                <TextBlock Text="Subject Registration Guidelines"  FontSize="30"
                            Style="{StaticResource TargetCaptionStyle}"
                            HorizontalAlignment="Center"
                            Margin="0,0,0,20"/>
 
-                <TextBlock TextWrapping="Wrap" LineHeight="25" FontSize="16">
+                <TextBlock TextWrapping="Wrap" LineHeight="25" FontSize="18">
                     <Run Text="Please read carefully before proceeding:" FontWeight="SemiBold"/><LineBreak/><LineBreak/>
                     
                     <Run Text="1. Subject Limits: " FontWeight="Bold" Foreground="DarkGreen"/>
@@ -66,12 +66,24 @@
                     <Run Text="correction fee" FontWeight="Bold" Foreground="DarkRed"/>
                     <Run Text=", payable directly to the Principal's Office."/>
                 </TextBlock>
+                
+                <!-- GRID TO DISPLAY NUMBER OF REGISTERED COURSES-->
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Number Of Registered Courses:" FontSize="18" FontWeight="Bold" Foreground="Green"/>
+
+                    <TextBlock x:Name="Count_RegisteredSubject_Txt" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                               FontWeight="Bold" FontSize="22" Width="150" Foreground="Red"
+                               Text="{Binding RegisteredCourse_Count, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
 
                 <!-- Subject Selection Area -->
                 <StackPanel Margin="20,10,20,20">
-                    <TextBlock Text="Select Your Subjects:" 
-               Style="{StaticResource TargetCaptionStyle}" 
-               Margin="0,0,0,10"/>
+                    <TextBlock Text="Select Your Subjects:" FontSize="30"
+                               Style="{StaticResource TargetCaptionStyle}" Margin="0,0,0,10"/>
 
                     <!-- The ListBox will automatically generate a CheckBox for every subject in the dictionary -->
                     <ListBox x:Name="CourseListBox" 
@@ -87,7 +99,7 @@
                                 <CheckBox 
                                           x:Name="Checkbox_ListofSubject"
                                            Content="{Binding}"
-                                          FontSize="16" 
+                                          FontSize="18" 
                                           Margin="5,8" 
                                           Cursor="Hand"/>
                             </DataTemplate>
@@ -101,24 +113,34 @@
                             Margin="0,20,0,0" 
                             ToolTip="Ensure you have selected between 6 and 9 approved subjects before submitting."
                             Background="DarkGreen" Foreground="White" FontSize="16" FontWeight="Bold"
-                            IsDefault="True"/>
+                            IsDefault="True"
+                            />
                 </StackPanel>
 
-                <ListBox x:Name="DisplayRegSubject_Listbox" BorderThickness="5" AllowDrop="True"
+                <ListBox x:Name="DisplayRegSubject_Listbox" BorderThickness="5" AllowDrop="True" FontSize="20"
                           Visibility="Collapsed" BorderBrush="Gray" MinHeight="100">
                     
                 </ListBox>
-
-                <!--Selected Courses DataGrid-->
-                <DataGrid x:Name="Grid_DisplayRegSubject" BorderThickness="3" Height="250" Width="400"
-                          AutoGenerateColumns="False">
-                    <!--ItemsSource="{Binding Student.Courses, UpdateSourceTrigger=PropertyChanged}"-->
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header= "SUBJECT" Binding="{Binding}" Width="auto"/>
-                        <DataGridTextColumn Header="SCORE:" Width="AUTO"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Button x:Name="CheckResult_btn" Foreground="Green" Content="My Result" FontWeight="Bold" FontSize="25"
+                        Click="CheckResult_btn_Click" Width="200" Margin="9" 
+                        HorizontalAlignment="Left"
+                        ToolTip="Click the Button to Check your Result"
+                        ToolTipService.ShowDuration="5000"/>
             </StackPanel>
         </Grid>
     </Border>
 </UserControl>
+
+    <!--<--><!--   
+        Registered Courses DataGrid, this is used to display the REGISTERED COURSE UPON LOGIN--><!--
+    <DataGrid x:Name="Grid_DisplayRegSubject" BorderThickness="3" Height="250" Width="400"
+          AutoGenerateColumns="False" ItemsSource="{Binding Courses}">
+        --><!--ItemsSource="{Binding Student.Courses, UpdateSourceTrigger=PropertyChanged}"--><!--
+        <DataGrid.Columns>
+            <DataGridTextColumn Header= "SUBJECT" Width="auto" FontSize="18" Foreground="Green"/>
+            <DataGridTextColumn Header="CA.TEST:" Width="AUTO" FontSize="18" Foreground="Green"/>
+            <DataGridTextColumn Header="EXAM:" Width="AUTO" FontSize="18" Foreground="Green"/>
+        </DataGrid.Columns>
+    </DataGrid>
+    -->
+

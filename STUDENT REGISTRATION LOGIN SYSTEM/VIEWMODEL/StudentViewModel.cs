@@ -16,16 +16,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.VIEWMODEL
             Student.Stdnt_ID = $"SDT-{DateTime.Now:yyyyMMddHHmmss}";
         } // student view model Constructor
         
-        /*
-        public int StudentPassword()
-        {
-            Student = new StudentInfo();
-            Random Rand_password = new Random();
-            Student.Stdnt_Password = Rand_password.Next(1, 20);
-            return Student.Stdnt_Password;
-        }// random password generator
-        */
-        
         public void GenerateStudentCredentials()
         {
             if (Student == null) Student = new StudentInfo();

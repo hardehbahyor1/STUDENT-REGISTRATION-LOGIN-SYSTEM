@@ -1,4 +1,5 @@
 ﻿using STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT;
+using STUDENT_REGISTRATION_LOGIN_SYSTEM.UTILITIES;
 using STUDENT_REGISTRATION_LOGIN_SYSTEM.VIEWMODEL;
 using System;
 using System.Collections.Generic;
@@ -25,19 +26,11 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("Under Development... \n check Back Later", "Information", MessageBoxButton.OK );
-            currentuser = null;
-            //currentuser.Stdnt_ID = null;
-            //currentuser.Gender = null;
-            //currentuser.Fname = null;
-            
-            LoginPage loginscreen = new LoginPage();
-            loginscreen.NavigationService.Navigate(loginscreen(currentuser));
+            UserSession.LogoutSession();
+            LoginPage page = new LoginPage();
 
-            //loginscreen.sh
-            //NavigationService.Navigate(new LoginPage());
-            this.Visibility= Visibility.Collapsed;
-            
+            var window =(MainWindow)Application.Current.MainWindow;
+            window.MainFrame.Navigate(page);
         }
     }
 }
