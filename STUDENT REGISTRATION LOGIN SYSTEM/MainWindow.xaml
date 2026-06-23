@@ -16,7 +16,7 @@
 
     <Grid x:Name="mainGrid">
         <Grid.Background>
-            <ImageBrush ImageSource="/IMAGES/photo-1516979187457-637abb4f9353.jpeg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="/IMAGES/UC VIEW IMAGES/student image 1.jpg" Opacity="0.2" Stretch="UniformToFill"/>
         </Grid.Background>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>

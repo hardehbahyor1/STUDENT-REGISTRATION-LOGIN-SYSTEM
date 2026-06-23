@@ -1,7 +1,10 @@
 ﻿using STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE;
+using STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,11 +17,125 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
     /// <summary>
     /// Interaction logic for UC_studentManagement.xaml
     /// </summary>
-    public partial class UC_studentManagement : UserControl
+    public partial class UC_studentManagement : UserControl, INotifyPropertyChanged
     {
+        private int totalStudent;
+        private int maleStudent;
+        private int femaleStudent;
+        private int jssStudent;
+        private int sssStuden;
+        private int sciStudent;
+        private int artStudent;
+        private int commercialStudent;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnpropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public int Total
+        {
+            get => totalStudent;
+            set
+            {
+                if(totalStudent!= value)
+                {
+                    totalStudent=value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+        public int Male
+        {
+            get => maleStudent;
+            set
+            {
+                if (maleStudent != value)
+                {
+                    maleStudent  = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+        public int Female
+        {
+            get => femaleStudent;
+            set
+            {
+                if (femaleStudent != value)
+                {
+                    femaleStudent = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+        public int Jss
+        {
+            get => jssStudent;
+            set
+            {
+                if (jssStudent != value)
+                {
+                    jssStudent = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+        public int Sss
+        {
+            get => sssStuden;
+            set
+            {
+                if (sssStuden != value)
+                {
+                    sssStuden = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+        public int Science
+        {
+            get => sciStudent;
+            set
+            {
+                if (sciStudent != value)
+                {
+                    sciStudent = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+        public int Commercial
+        {
+            get => commercialStudent;
+            set
+            {
+                if (commercialStudent != value)
+                {
+                    commercialStudent = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+        public int Arts
+        {
+            get => artStudent;
+            set
+            {
+                if (artStudent != value)
+                {
+                    artStudent = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
         public UC_studentManagement()
         {
             InitializeComponent();
+            StudentDashboardAnalysis();
+            StudentDashboardAnalysis(); // called twice for real-time update after updating / editing student record
+
         }
 
         private void btn_NewStudent_Click(object sender, RoutedEventArgs e)
@@ -72,6 +189,8 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
 
                     bloodtype_txt.Text = stdnt.StudentBloodGroup;
                     allergries_txt.Text = stdnt.StudentAllergies;
+                    List<StudentInfo> subject = new List<StudentInfo>();
+                    listofSubject_txt.ItemsSource = stdnt.Courses;
                 }
                 else
                 {
@@ -83,6 +202,24 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
                 MessageBox.Show("Connection Not Secured.", "Information", MessageBoxButton.RetryCancel, MessageBoxImage.Error);
                 return;
             }
+        }
+
+        public void StudentDashboardAnalysis()
+        {
+            List<StudentInfo> studentCount = Database_ConnectionPort.LoadData();
+            int Sss1, Sss2, Sss3;
+
+            totalStudent_txt.Text = studentCount.Count().ToString();
+            maleStudent_txt.Text = studentCount.Count(x=> x.Gender == "MALE").ToString();
+            femaleStudent_txt.Text = studentCount.Count(x => x.Gender == "FEMALE").ToString();
+            jsStudent_txt.Text = studentCount.Count(x => x.Stdnt_Department == "Junior Secondary").ToString();
+                Sss1 = studentCount.Count(x => x.Stdnt_Class == "SS 1");
+                Sss2 = studentCount.Count(x=> x.Stdnt_Class == "SS 2");
+                Sss3 = studentCount.Count(x=> x.Stdnt_Class == "SS 3");
+                ss_Student_txt.Text = (Sss1 + Sss2 + Sss3).ToString();
+            arts_Student_txt.Text = studentCount.Count(x => x.Stdnt_Department == "Arts").ToString();
+            sciStudent_txt.Text = studentCount.Count(x => x.Stdnt_Department == "Science").ToString();
+            commercial_Student_txt.Text = studentCount.Count(x => x.Stdnt_Department == "Commercial").ToString();
         }
     }
 }

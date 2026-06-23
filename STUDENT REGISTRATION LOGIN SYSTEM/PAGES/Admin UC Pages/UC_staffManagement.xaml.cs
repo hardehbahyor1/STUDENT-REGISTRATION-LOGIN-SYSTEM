@@ -226,8 +226,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
         public void DashboardAnalysisChart()
         {
             ObservableCollection<Admininfo> analysis = new ObservableCollection<Admininfo>();
-            var readDatabase = Database_ConnectionPort.RetrieveAdminData();
-
             txtTotalStaff.Text = StaffCount.Count.ToString();
             txtmaleStaff.Text = StaffCount.Count(x => x.AdminGender == "MALE").ToString();
             txtfemaleStaff.Text = StaffCount.Count(x => x.AdminGender == "FEMALE").ToString();
@@ -237,8 +235,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
             txtICTStaff.Text = StaffCount.Count(x=> x.AdminDept == "ICT").ToString();
             txtadminStaff.Text = StaffCount.Count(x => x.AdminDept == "ADMIN").ToString();
             txtteacherStaff.Text = StaffCount.Count(x=> x.AdminROle ==  "TUTOR"). ToString();
-
-
         } // called from the constructor for Constant Automatic execution.
     }   
 }

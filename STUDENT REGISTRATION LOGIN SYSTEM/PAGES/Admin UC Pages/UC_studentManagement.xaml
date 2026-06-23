@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ScrollViewer VerticalScrollBarVisibility="Visible">
+    <ScrollViewer VerticalScrollBarVisibility="Disabled">
         
-        <!-- Static Recources Definiton-->
+        <!-- Static Recources Definiton -->
         <ScrollViewer.Resources>
             
-            <!--Button-->
+            <!-- Button -->
             <Style x:Key="BtnKey" TargetType="Button">
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Background" Value="Green"/>
@@ -21,7 +21,7 @@
                 <Setter Property="FontWeight" Value="Bold"/>
             </Style>
             
-            <!--Textblock-->
+            <!-- Textblock -->
             <Style x:Key="txtblockKey" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="29"/>
                 <Setter Property="FontFamily" Value="Cascadia Mono"/>
@@ -29,7 +29,7 @@
                 <Setter Property="Margin" Value="5"/>
             </Style>
             
-            <!-- Textbox-->
+            <!-- Textbox -->
             <Style x:Key="textbox" TargetType="TextBox">
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="FontWeight" Value="SemiBold"/>
@@ -37,7 +37,7 @@
         </ScrollViewer.Resources>
         
         <Border Margin="5" BorderThickness="5" BorderBrush="Green">
-            <!-- MAIN GRID-->
+            <!-- MAIN GRID -->
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>
@@ -45,7 +45,7 @@
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
 
-                <!-- 00 ROW DEFINITION-->
+                <!-- 00 ROW DEFINITION -->
                 <Grid Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -60,7 +60,7 @@
                     <Button x:Name="btn_SearchStudent" Grid.Column="01" Content="SEARCH" Style="{StaticResource BtnKey}" Click="btn_SearchStudent_Click"/>
                 </Grid>
 
-                <!-- 01 ROW DEFINITION-->
+                <!-- 01 ROW DEFINITION -->
                 <Grid Grid.Row="01" Margin="5" Width="Auto">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="190"/>
@@ -85,6 +85,8 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -141,7 +143,7 @@
                         <TextBlock Grid.Row="11" Grid.Column="0" Text="OCCUPATION:" Style="{StaticResource txtblockKey}" Foreground="Green"/>
                         <TextBox x:Name="occupation_txt" Grid.Row="11" Grid.Column="1" IsEnabled="False" Style="{StaticResource textbox}"/>
                         
-                        <!-- STUDENT HEALTH INFO-->
+                        <!-- STUDENT HEALTH INFO -->
                         <TextBlock Grid.Row="12" Grid.Column="0"  Text="Student Health" Foreground="Green" FontWeight="Bold" FontSize="25"
                                    Style="{StaticResource txtblockKey}" Margin="0,10,0,5"/>
                         <TextBlock Grid.Row="13" Grid.Column="0" Text="BLOOD GROUP:" Style="{StaticResource txtblockKey}" Foreground="Green"/>
@@ -149,15 +151,182 @@
 
                         <TextBlock Grid.Row="14" Grid.Column="0" Text="ALLERGRIES:" Style="{StaticResource txtblockKey}" Foreground="Green"/>
                         <TextBox x:Name="allergries_txt" Grid.Row="14" Grid.Column="1" IsEnabled="False" Style="{StaticResource textbox}"/>
+                        
+                        <!-- ACADEMIC INFO -->
+                        <TextBlock Grid.Row="15" Grid.Column="0" Text="Subject Offered" Margin="0,19,0,5" FontWeight="Bold" FontSize="25"
+                                   Style="{StaticResource txtblockKey}" Foreground="Green"/>
+                        <ListBox x:Name="listofSubject_txt" Grid.Row="16" Grid.Column="1" IsEnabled="False" FontSize="20"/>
                     </Grid>
                     
                     <!-- 01 GRID COLUMN DEFINITION -->
                     <Border Grid.Column="1" BorderThickness="5" BorderBrush="Green">
                         <Grid Margin="8"  Background="Transparent">
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
+                            
+                            <!-- UPPER ROW UI -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <!-- 00 UI Total Student -->
+                                <Grid Margin="4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="👥" Foreground="Green" FontSize="25"
+                                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock  Text="Total " Foreground="Green" FontWeight="Bold" FontSize="15"
+                                                   HorizontalAlignment="Center"/>
+                                        <TextBlock x:Name="totalStudent_txt" Foreground="Black" FontWeight="Bold" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+                                
+                                <!-- 01 UI Male Student -->
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="👥" Foreground="Green" FontSize="25"
+                                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock  Text=" MALE " Foreground="Green" FontWeight="Bold" FontSize="15"
+                                                    HorizontalAlignment="Center"/>
+                                        <TextBlock x:Name="maleStudent_txt" Foreground="Black" FontWeight="Bold" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+                                
+                                <!-- 02 UI Female Student -->
+                                <Grid Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="👥" Foreground="Green" FontSize="25"
+                                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock  Text=" FEMALE " Foreground="Green" FontWeight="Bold" FontSize="15"
+                                                    HorizontalAlignment="Center"/>
+                                        <TextBlock x:Name="femaleStudent_txt" Foreground="Black" FontWeight="Bold" FontSize="15"/>
+                                    </StackPanel>
+                                </Grid>
+                                
+                                <!-- 10 UI JSS Student -->
+                                <Grid Grid.Row="1" Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="👥" Foreground="Green" FontSize="25" 
+                                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock  Text="JSS" Foreground="Green" FontWeight="Bold" FontSize="15"
+                                                    HorizontalAlignment="Center"/>
+                                        <TextBlock x:Name="jsStudent_txt" Foreground="Black" FontWeight="Bold" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+                                
+                                <!-- 11 UI SSS Student-->
+                                <Grid Grid.Row="1" Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="👥" Foreground="Green" FontSize="25"
+                                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock  Text="SSS" Foreground="Green" FontWeight="Bold" FontSize="15"
+                                                    HorizontalAlignment="Center"/>
+                                        <TextBlock x:Name="ss_Student_txt" Foreground="Black" FontWeight="Bold" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+
+                             
+
+                                <!-- 12 UI SCIENCE Student-->
+                                <Grid Grid.Row="1" Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="👥" Foreground="Green" FontSize="25"
+                                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock  Text="SCIENCE" Foreground="Green" FontWeight="Bold" FontSize="15" 
+                                                    HorizontalAlignment="Center"/>
+                                        <TextBlock x:Name="sciStudent_txt" Foreground="Black" FontWeight="Bold" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <!-- 20 UI ARTS Student-->
+                                <Grid Grid.Row="2" Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="👥" Foreground="Green" FontSize="25"
+                                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock  Text="ARTS" Foreground="Green" FontWeight="Bold" FontSize="15"
+                                                    HorizontalAlignment="Center"/>
+                                        <TextBlock x:Name="arts_Student_txt" Foreground="Black" FontWeight="Bold" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <!-- 21 UI COMMERCIAL Student-->
+                                <Grid Grid.Row="2" Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="👥" Foreground="Green" FontSize="25"
+                                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock  Text="COMM. Student" Foreground="Green" FontWeight="Bold" FontSize="15"
+                                                    HorizontalAlignment="Center"/>
+                                        <TextBlock x:Name="commercial_Student_txt" Foreground="Black" FontWeight="Bold" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <!-- 22 UI SSS Student-->
+                                <Grid Grid.Row="2" Grid.Column="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="👥" Foreground="Green" FontSize="25"
+                                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock  Text="????? " Foreground="Green" FontWeight="Bold" FontSize="15"
+                                                    HorizontalAlignment="Center"/>
+                                        <TextBlock x:Name="_Student_txt" Foreground="Black" FontWeight="Bold" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                            
+                            <!-- LOWER ROW UI FOR STUDENT LIST-->
                         </Grid>
                     </Border>
                 </Grid>

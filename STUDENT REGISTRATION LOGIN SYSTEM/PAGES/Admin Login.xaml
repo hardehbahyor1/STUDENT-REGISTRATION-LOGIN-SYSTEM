@@ -15,8 +15,8 @@
             <StackPanel>
                 <!--Title Description-->
                 <WrapPanel Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-                    <Image Source="/IMAGES/contact image icon.png" Width="50"/>
-                    <TextBlock FontWeight="ExtraBold" FontFamily="Arial Black" FontSize="30" 
+                    <Image Source="/IMAGES/contact image icon.png" Width="80"/>
+                    <TextBlock FontWeight="ExtraBold" FontFamily="Arial Black" FontSize="40" 
                        Foreground="Green" Background="White"
                        HorizontalAlignment="Center" Margin="0,0,0,20">
                         ADMIN LOGIN

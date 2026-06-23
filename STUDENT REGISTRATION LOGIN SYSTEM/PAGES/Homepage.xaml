@@ -22,8 +22,8 @@
                 </Grid.RowDefinitions>
                 
                 <StackPanel Grid.Row="0" Margin="0,50,0,40" HorizontalAlignment="Center" >
-                    <TextBlock Text="SCHOOL" FontSize="26" FontWeight="Black" Foreground="Green" HorizontalAlignment="Center"/>
-                    <TextBlock Text="PORTAL" FontSize="18" FontWeight="SemiBold" Foreground="Green" HorizontalAlignment="Center"/>
+                    <TextBlock Text="SCHOOL" FontSize="30" FontWeight="Black" Foreground="Green" HorizontalAlignment="Center"/>
+                    <TextBlock Text="PORTAL" FontSize="25" FontWeight="SemiBold" Foreground="Green" HorizontalAlignment="Center"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Margin="15,0" VerticalAlignment="Top">
@@ -31,7 +31,7 @@
                             Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Set up a new student account">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="200">
                             <Image Source="/IMAGES/contact image icon.png" Width="30" Height="30" Margin="15,0,20,0"/>
-                            <TextBlock Text="REGISTER" FontSize="20" FontWeight="Bold" FontFamily="Cascadia Code" Foreground="#2E7D32" VerticalAlignment="Center"/>
+                            <TextBlock Text="REGISTER" FontSize="25" FontWeight="Bold" FontFamily="Cascadia Code" Foreground="#2E7D32" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
                     
@@ -41,7 +41,7 @@
                         
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="200">
                             <Image Source="/IMAGES/login icon 3.jpg" Width="30" Height="30" Margin="15,0,20,0"/>
-                            <TextBlock Text="LOGIN" FontSize="20" FontWeight="Bold" FontFamily="Cascadia Code" Foreground="#2E7D32" VerticalAlignment="Center"/>
+                            <TextBlock Text="LOGIN" FontSize="25" FontWeight="Bold" FontFamily="Cascadia Code" Foreground="#2E7D32" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
 
@@ -49,7 +49,7 @@
                             Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Admin Access">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="200">
                             <Image Source="/IMAGES/login icon 3.jpg" Width="30" Height="30" Margin="15,0,20,0"/>
-                            <TextBlock Text="STAFF/ADMIN" Width="Auto" FontSize="20" FontWeight="Bold" FontFamily="Cascadia Code" Foreground="#2E7D32" VerticalAlignment="Center"/>
+                            <TextBlock Text="STAFF/ADMIN" Width="Auto" FontSize="25" FontWeight="Bold" FontFamily="Cascadia Code" Foreground="#2E7D32" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
@@ -59,13 +59,13 @@
         <Grid Grid.Column="1">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Welcome to Student Portal"
-               FontSize="30"
+               FontSize="60"
                FontWeight="Bold"
                Foreground="#2E7D32"
                HorizontalAlignment="Center"/>
 
                 <TextBlock Text="Select an option from the left menu to continue"
-               FontSize="18"
+               FontSize="30" FontWeight="Bold"
                Margin="0,10,0,0"
                Opacity="0.8"
                TextAlignment="Center"/>
