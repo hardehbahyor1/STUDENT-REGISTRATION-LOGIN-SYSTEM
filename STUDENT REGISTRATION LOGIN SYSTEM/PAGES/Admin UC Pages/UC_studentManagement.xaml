@@ -52,12 +52,14 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Button x:Name="btn_NewStudent" Content="REGISTER NEW" Style="{StaticResource BtnKey}" Click="btn_NewStudent_Click"/>
                     <Button x:Name="btn_ListofStudent" Grid.Column="03" Content="STUDENT LIST" Style="{StaticResource BtnKey}" Click="btn_ListofStudent_Click"/>
                     <Button x:Name="btn_Editstudent" Grid.Column="02" Content="EDIT STUDENT" Style="{StaticResource BtnKey}" Click="btn_Editstudent_Click"/>
                     <Button x:Name="btn_SearchStudent" Grid.Column="01" Content="SEARCH" Style="{StaticResource BtnKey}" Click="btn_SearchStudent_Click"/>
+                    <Button x:Name="btn_allocateHostel" Grid.Column="04" Content="ALLOCATE HOSTEL" Style="{StaticResource BtnKey}" Click="btn_allocateHostel_Click"/>
                 </Grid>
 
                 <!-- 01 ROW DEFINITION -->
@@ -173,6 +175,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
+                                
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
@@ -303,7 +306,7 @@
                                     <TextBlock Grid.Column="0" Text="👥" Foreground="Green" FontSize="25"
                                                HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                     <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <TextBlock  Text="COMM. Student" Foreground="Green" FontWeight="Bold" FontSize="15"
+                                        <TextBlock  Text="COMMERCIAL" Foreground="Green" FontWeight="Bold" FontSize="15"
                                                     HorizontalAlignment="Center"/>
                                         <TextBlock x:Name="commercial_Student_txt" Foreground="Black" FontWeight="Bold" FontSize="12"/>
                                     </StackPanel>
@@ -327,6 +330,24 @@
                             </Grid>
                             
                             <!-- LOWER ROW UI FOR STUDENT LIST-->
+                            <DataGrid x:Name="listofstudent_DataGrid" Grid.Row="1" Margin="5" AutoGenerateColumns="False" IsEnabled="True" 
+                                      BorderThickness="2" BorderBrush="Green" AlternatingRowBackground="#F5F5F5" FontWeight="Medium" FontSize="20"
+                                      CanUserAddRows="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal" 
+                                      HorizontalScrollBarVisibility="Auto"
+                                      >
+                                
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID NO" Width="Auto" Binding="{Binding Stdnt_ID, UpdateSourceTrigger= PropertyChanged }"/>
+                                    <DataGridTextColumn Header="FIRSTNAME" Width="Auto" Binding="{Binding Fname, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="MIDDLENAME" Width="AUto" Binding="{Binding Mname, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="LASTNAME" Width="Auto" Binding="{Binding Lname, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="GENDER" Width="Auto" Binding="{Binding Gender, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="DOB" Width="Auto" Binding="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="CLASS" Width="AUto" Binding="{Binding Stdnt_Class, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="DEPARTMENT" Width="Auto" Binding="{Binding Stdnt_Department, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="PASSWORD" Width="Auto" Binding="{Binding Stdnt_Password, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                     </Border>
                 </Grid>

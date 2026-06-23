@@ -149,11 +149,13 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
             var fetchlist = Database_ConnectionPort.LoadData();
             if(fetchlist != null)
             {
-                MessageBox.Show("Connection Secured.", "Information", MessageBoxButton.OK, MessageBoxImage.Information );
+                MessageBox.Show("Connection Secured/ Record Found.", "Information", MessageBoxButton.OK, MessageBoxImage.Information );
+                listofstudent_DataGrid.ItemsSource = fetchlist;
+                listofstudent_DataGrid.Visibility = Visibility.Visible;
             }
             else
             {
-                MessageBox.Show("Connection Not Secured.", "Information", MessageBoxButton.RetryCancel, MessageBoxImage.Error);
+                MessageBox.Show("Connection Not Secured or No Record Found.", "Information", MessageBoxButton.RetryCancel, MessageBoxImage.Error);
                 return;
             }
         }
@@ -220,6 +222,11 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
             arts_Student_txt.Text = studentCount.Count(x => x.Stdnt_Department == "Arts").ToString();
             sciStudent_txt.Text = studentCount.Count(x => x.Stdnt_Department == "Science").ToString();
             commercial_Student_txt.Text = studentCount.Count(x => x.Stdnt_Department == "Commercial").ToString();
+        }
+
+        private void btn_allocateHostel_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Under Development!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
