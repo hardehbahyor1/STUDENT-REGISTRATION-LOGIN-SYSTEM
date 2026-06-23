@@ -1,5 +1,6 @@
 ﻿using STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE;
 using STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT;
+using STUDENT_REGISTRATION_LOGIN_SYSTEM.VIEWMODEL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,8 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
         private int sciStudent;
         private int artStudent;
         private int commercialStudent;
+
+        private StudentInfo currentsudent; // to be used to assign searched student during hostel allocation
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnpropertyChanged([CallerMemberName] string propertyName = null)
@@ -135,25 +138,28 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
             InitializeComponent();
             StudentDashboardAnalysis();
             StudentDashboardAnalysis(); // called twice for real-time update after updating / editing student record
-
+            HostelAllocation_UI_Grid.Visibility = Visibility.Collapsed; // UI only visible if Student record does not return NULL
         }
 
         private void btn_NewStudent_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("UNDER DEVELOPMENT.... CHECK BACK LATER.", "Information", MessageBoxButton.OK, MessageBoxImage.Information); 
+            //admin
         }// to register new student(Navigate to the Student Reg Dashboard)
 
         private void btn_ListofStudent_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("UNDER DEVELOPMENT.... CHECK BACK LATER.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            //MessageBox.Show("UNDER DEVELOPMENT.... CHECK BACK LATER.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             var fetchlist = Database_ConnectionPort.LoadData();
             if(fetchlist != null)
             {
-                MessageBox.Show("Connection Secured.", "Information", MessageBoxButton.OK, MessageBoxImage.Information );
+                MessageBox.Show("Connection Secured/ Record Found.", "Information", MessageBoxButton.OK, MessageBoxImage.Information );
+                listofstudent_DataGrid.ItemsSource = fetchlist;
+                listofstudent_DataGrid.Visibility = Visibility.Visible;
             }
             else
             {
-                MessageBox.Show("Connection Not Secured.", "Information", MessageBoxButton.RetryCancel, MessageBoxImage.Error);
+                MessageBox.Show("Connection Not Secured or No Record Found.", "Information", MessageBoxButton.RetryCancel, MessageBoxImage.Error);
                 return;
             }
         }
@@ -189,8 +195,8 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
 
                     bloodtype_txt.Text = stdnt.StudentBloodGroup;
                     allergries_txt.Text = stdnt.StudentAllergies;
-                    List<StudentInfo> subject = new List<StudentInfo>();
-                    listofSubject_txt.ItemsSource = stdnt.Courses;
+                   // List<StudentInfo> subject = new List<StudentInfo>();
+                    //listofSubject_txt.ItemsSource = stdnt.Courses;
                 }
                 else
                 {
@@ -220,6 +226,93 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
             arts_Student_txt.Text = studentCount.Count(x => x.Stdnt_Department == "Arts").ToString();
             sciStudent_txt.Text = studentCount.Count(x => x.Stdnt_Department == "Science").ToString();
             commercial_Student_txt.Text = studentCount.Count(x => x.Stdnt_Department == "Commercial").ToString();
+        }
+
+        private void btn_allocateHostel_Click(object sender, RoutedEventArgs e)
+        {
+            if(currentsudent == null)
+            {
+                MessageBox.Show("Search for a student first.");
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(currentsudent.Hostelname))
+            {
+                MessageBox.Show($"Student is already allocated to {currentsudent.Hostelname}", 
+                    "Information", 
+                    MessageBoxButton.OK, 
+                    MessageBoxImage.Information);
+                return;
+            }// check if Hostel is not allocated already
+
+            currentsudent.Hostelname = hostelNameCmb.Text.ToString();
+            currentsudent.BedspaceNumber = bedSpacecmb.Text.ToString();
+            currentsudent.Blocktype = blockType_cmb.Text.ToString();
+            currentsudent.Roomnumber = roomNo_cmb.Text.ToString();
+
+            Database_ConnectionPort.UpdateStudent(currentsudent);
+            MessageBox.Show("Hostel allocation successful", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        // Hostel Accomodation Development Logic. If Search Record is found, then the Collapsed UI will be Visible
+        private void SearchID_btn_Click(object sender, RoutedEventArgs e)
+        {
+            var fetchInfo = Database_ConnectionPort.LoadData();
+            string acceptInput = AcceptStudentID_txt.Text.ToString();
+            var student = fetchInfo.SingleOrDefault(s => s.Stdnt_ID == acceptInput);
+            if(student != null)
+            {
+                currentsudent = student;
+                MessageBox.Show($"Record Found..... {student.Gender} Student Detected.", "Infomation", MessageBoxButton.OK, MessageBoxImage.Information);
+                if(student.Gender == "FEMALE")
+                {
+                    MessageBox.Show("Student is FEMALE");
+                    HostelAllocation_UI_Grid.Visibility = Visibility.Visible;
+                    HostelViewModel hostel = new HostelViewModel();
+                    hostel.LoadHostelByGender(student.Gender);
+                    hostelNameCmb.ItemsSource = hostel.HostelName;
+
+                    
+                    return;
+                }
+                else if(student.Gender == "MALE")
+                {
+                    MessageBox.Show("Student is MALE");
+                    HostelAllocation_UI_Grid.Visibility = Visibility.Visible;
+                    HostelViewModel hostel = new HostelViewModel();
+                    hostel.LoadHostelByGender(student.Gender);
+                    hostelNameCmb.ItemsSource = hostel.HostelName;
+                    return;
+                }
+                return;
+                //var verifyGender = checkGender.SingleOrDefault(s => s.Gender == g) 
+            }
+            else
+            {
+                MessageBox.Show("Record not Found.", "Infomation", MessageBoxButton.RetryCancel, MessageBoxImage.Error);
+                //HostelAllocation_UI_Grid.Visibility = Visibility.Collapsed;
+                return;
+            }
+        }// used to search for the student before allocating an accomodation
+
+        private void hostelNameCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void blockType_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void roomNo_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void bedSpacecmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

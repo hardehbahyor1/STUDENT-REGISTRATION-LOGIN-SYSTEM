@@ -24,13 +24,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.VIEWMODEL
         public AdminViewmodel()
         {
             admin = new Admininfo();
-            //staffList = new ObservableCollection<Admininfo>();
-            //staffList.CollectionChanged += (s, e) =>
-            //{
-            //    StaffAnalysisDashboard();
-            //};
-            
-
         }// constructor
 
         public void Generate_StaffID()

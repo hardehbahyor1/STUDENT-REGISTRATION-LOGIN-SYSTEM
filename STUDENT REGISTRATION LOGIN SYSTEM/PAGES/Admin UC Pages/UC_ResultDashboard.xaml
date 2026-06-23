@@ -6,23 +6,123 @@
              xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Image Source="/IMAGES/UC VIEW IMAGES/student result.jpg" 
-Opacity="0.2" 
-Stretch="UniformToFill"/>
+    <ScrollViewer>
+        <!-- Static Recources Definiton -->
+        <ScrollViewer.Resources>
+            <!-- Textblock -->
+            <Style x:Key="txtblockKey" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="29"/>
+                <Setter Property="FontFamily" Value="Cascadia Mono"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
 
-        <Border BorderBrush="Green" 
- BorderThickness="2" 
- Margin="15"
- VerticalAlignment="Center" 
- HorizontalAlignment="Center">
+            <!-- Textbox -->
+            <Style x:Key="textbox" TargetType="TextBox">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+            </Style>
+        </ScrollViewer.Resources>
+        
+        <!-- Border UI -->
+        <Border BorderThickness="2" BorderBrush="Green" Padding="4" CornerRadius="4">
+            <Grid Margin="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <!-- ROW 0 UI DESIGN -->
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Text="STUDENT RESULT COMPUTATION DASHBOARD" 
+                               Foreground="Green" FontFamily="Cascadia Mono" FontWeight="Bold" FontSize="30">
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" LineHeight="25" FontSize="18">
+                        <Run Text="⚠ Please read carefully before proceeding:" FontWeight="SemiBold"/><LineBreak/><LineBreak/>
+                        <Run Text="1. Search and select the correct student using their"/>
+                        <Run Text="Student ID" Foreground="Red" FontWeight="Bold"/> <LineBreak/>
+                        
+                        <Run Text="2."/>
+                        <Run Text="Verify" FontWeight="Bold" Foreground="Red"/>
+                        <Run Text="the student's details displayed on the screen."/> 
+                        <LineBreak/>
+                        
+                        <Run Text="3. Ensure all listed courses were registered by the student."/> <LineBreak/>
+                        <Run Text="4. Enter valid scores only (0–100)."/> <LineBreak/>
+                        <Run Text="5. Review all scores carefully before saving."/> <LineBreak/>
+                        <Run Text="6. Do not enter scores for courses that were not registered. "/> <LineBreak/>
+                        <Run Text="7. Save only after confirming that all entries are correct."/> <LineBreak/>
+                        <Run Text="8. Any incorrect score entered may result in an incorrect grade and GPA calculation."/>
+                    </TextBlock> 
+                    
+                    <!-- SEARCH TXT & BUTTON UI CONTROL -->
+                    <TextBox Name="searchID_txt" Width="250" Foreground="Green" FontFamily="Times New Roman" FontSize="25"
+                             HorizontalAlignment="Left" Margin="10,19,0,0"
+                             ToolTip="Enter Student ID to Search"/>
+                    
+                    <Button Name="search_btn" Foreground="White" Background="Green" Width="100"
+                            Click="search_btn_Click"
+                            HorizontalAlignment="Left" Margin="10,19,0,0"
+                            FontWeight="Bold" FontSize="18" Content="SEARCH"/>
+                    
+                </StackPanel>
+                
+                <!-- ROW 1 UI DESIGN -->
+                <Grid Grid.Row="1" Margin="6,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="170"/>
+                    </Grid.ColumnDefinitions>
 
-            <Label Content="UNDER DEVELOPMENT" 
-    FontSize="40" 
-    FontWeight="Bold" 
-    Background="Green" 
-    Foreground="White"
-    Padding="20"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="FIRST NAME:" Style="{StaticResource txtblockKey}" Foreground="Green"/>
+                    <TextBox x:Name="fname_txt" Grid.Row="0" Grid.Column="1" IsEnabled="False" Style="{StaticResource textbox}"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="MIDDLE NAME:" Style="{StaticResource txtblockKey}" Foreground="Green"/>
+                    <TextBox x:Name="Lname_txt" Grid.Row="1" Grid.Column="1" IsEnabled="False" Style="{StaticResource textbox}"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="MIDDLE NAME:" Style="{StaticResource txtblockKey}" Foreground="Green"/>
+                    <TextBox x:Name="Mname_txt" Grid.Row="2" Grid.Column="1" IsEnabled="False" Style="{StaticResource textbox}"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="DEPARTMENT:" Style="{StaticResource txtblockKey}" Foreground="Green"/>
+                    <TextBox x:Name="dept_txt" Grid.Row="3" Grid.Column="1" IsEnabled="False" Style="{StaticResource textbox}"/>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="CLASS:" Style="{StaticResource txtblockKey}" Foreground="Green"/>
+                    <TextBox x:Name="class_txt" Grid.Row="4" Grid.Column="1" IsEnabled="False" Style="{StaticResource textbox}"/>
+                </Grid>
+                
+                <!-- ROW 2 UI DESIGN -->
+                <!-- DataGrid for Subject & Score Computation -->
+                <StackPanel Orientation="Vertical" Grid.Row="2">
+                    <DataGrid x:Name="subjectScore_datagrid" Grid.Row="2" AutoGenerateColumns="False"
+                              BorderThickness="2" BorderBrush="Green" AlternatingRowBackground="#F5F5F5" FontWeight="Medium" FontSize="20"
+                              CanUserAddRows="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal" 
+                              HorizontalScrollBarVisibility="Auto">
+                        
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="SUBJECT" Width="Auto" IsReadOnly="True" Binding="{Binding SubjectName}"/>
+                            <DataGridTextColumn Header="SCORE" Width="Auto" IsReadOnly="False" Binding="{Binding Score, Mode=TwoWay, UpdateSourceTrigger= PropertyChanged }"/>
+                            <DataGridTextColumn Header="SCORE" Width="Auto" IsReadOnly="True" Binding="{Binding Grade}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Button Name="submit_btn" Click="submit_btn_Click" Margin="10" Width="100"
+                            ToolTip="Click to Save Student Result.">
+                        <Image Source="/IMAGES/Submit bttton.jpg"/>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
         </Border>
-    </Grid>
+    </ScrollViewer>
 </UserControl>

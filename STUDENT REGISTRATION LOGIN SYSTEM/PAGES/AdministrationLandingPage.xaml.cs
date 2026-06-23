@@ -30,14 +30,43 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
             {
                 Txtblock_WelcomMssg.Text = $"Welcome, {user.Admin_ID_No}, {user.AdminROle.ToUpper()}, {user.AdminFirstName.ToUpper()} {user.AdminLastName}";
             }
-            Admin_Landing_PageDashboard.Content = new UC_ResultDashboard();
+            Admin_Landing_PageDashboard.Content = new UC_landingPage();
+            AccessControls();
+            
+        }
+
+        internal void AccessControls()
+        {
+            if (user.AdminROle.Equals("ICT ADMIN", StringComparison.CurrentCultureIgnoreCase))
+            {
+                Btn_studendDashboard.Visibility = Visibility.Visible;
+                Btn_staffDashboard.Visibility = Visibility.Visible;
+                Btn_Result.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Btn_homepage.Visibility = Visibility.Visible;
+                Btn_Logout.Visibility = Visibility.Visible;
+            }
         }
 
         private void Btn_Result_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("UNDER DEVELOPMENT, CHECK BACK LATER.", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
-            UC_ResultDashboard uC_Result = new UC_ResultDashboard();
-            Admin_Landing_PageDashboard.Content = uC_Result;
+            if(user.AdminROle.Equals("ICT ADMIN", StringComparison.CurrentCultureIgnoreCase))
+            {
+                UC_ResultDashboard uC_Result = new UC_ResultDashboard();
+                Admin_Landing_PageDashboard.Content = uC_Result;
+            }
+            else
+            {
+                MessageBox.Show("ACCESS DENIED: You do not have the required permissions to view Staff Management.",
+                    "Access Denied",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
+            
         }
 
         private void Btn_courseReg_Click(object sender, RoutedEventArgs e)
@@ -55,7 +84,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
                 MessageBox.Show("Session expired. Please log in again.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            //MessageBox.Show("UNDER DEVELOPMENT, CHECK BACK LATER.", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             var FetchData = Database_ConnectionPort.RetrieveAdminData();
 
             if (user.AdminROle.Equals("ICT ADMIN", StringComparison.CurrentCultureIgnoreCase))
@@ -63,10 +91,9 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
                 UC_staffManagement uC_Staff = new UC_staffManagement();
                 Admin_Landing_PageDashboard.Content = uC_Staff;
             }
-
             else
             {
-                MessageBox.Show("ACCESS DENIED: You do not have the required permissions to view Staff Management.",
+                MessageBox.Show("ACCESS DENIED: You do not have the required permissions.",
                     "Access Denied", 
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);

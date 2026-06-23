@@ -20,7 +20,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE
         public static List<StudentInfo> LoadData()
         {
             if (!File.Exists(filepath))
-                return new List<StudentInfo>();
+                 return new List<StudentInfo>();
 
             string JsonFIle = File.ReadAllText(filepath);
 
@@ -35,7 +35,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE
         {
             try
             {
-               // MessageBox.Show($"Saving to:\n{filepath}");
                 var _save_Data = LoadData();
                 _save_Data.Add(student);
                 var formatstyle = new JsonSerializerOptions
@@ -72,8 +71,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.DATABASE
             var options = new JsonSerializerOptions { WriteIndented = true };
             File.WriteAllText(filepath, JsonSerializer.Serialize(students, options));
         }
-
-
         /*
                 ADMIN CRUD LOGIC DEVELOPMENT
          */

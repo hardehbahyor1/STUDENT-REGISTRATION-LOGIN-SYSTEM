@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ScrollViewer VerticalScrollBarVisibility="Disabled">
+    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
         
         <!-- Static Recources Definiton -->
         <ScrollViewer.Resources>
@@ -52,12 +52,14 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Button x:Name="btn_NewStudent" Content="REGISTER NEW" Style="{StaticResource BtnKey}" Click="btn_NewStudent_Click"/>
                     <Button x:Name="btn_ListofStudent" Grid.Column="03" Content="STUDENT LIST" Style="{StaticResource BtnKey}" Click="btn_ListofStudent_Click"/>
                     <Button x:Name="btn_Editstudent" Grid.Column="02" Content="EDIT STUDENT" Style="{StaticResource BtnKey}" Click="btn_Editstudent_Click"/>
                     <Button x:Name="btn_SearchStudent" Grid.Column="01" Content="SEARCH" Style="{StaticResource BtnKey}" Click="btn_SearchStudent_Click"/>
+                    <Button x:Name="btn_allocateHostel" Grid.Column="04" Content="ALLOCATE HOSTEL" Style="{StaticResource BtnKey}" Click="btn_allocateHostel_Click"/>
                 </Grid>
 
                 <!-- 01 ROW DEFINITION -->
@@ -94,7 +96,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -163,7 +165,8 @@
                         <Grid Margin="8"  Background="Transparent">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             
                             <!-- UPPER ROW UI -->
@@ -173,6 +176,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
+                                
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition/>
@@ -303,7 +307,7 @@
                                     <TextBlock Grid.Column="0" Text="👥" Foreground="Green" FontSize="25"
                                                HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                     <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <TextBlock  Text="COMM. Student" Foreground="Green" FontWeight="Bold" FontSize="15"
+                                        <TextBlock  Text="COMMERCIAL" Foreground="Green" FontWeight="Bold" FontSize="15"
                                                     HorizontalAlignment="Center"/>
                                         <TextBlock x:Name="commercial_Student_txt" Foreground="Black" FontWeight="Bold" FontSize="12"/>
                                     </StackPanel>
@@ -326,7 +330,131 @@
                                 </Grid>
                             </Grid>
                             
-                            <!-- LOWER ROW UI FOR STUDENT LIST-->
+                            <!-- MIDDLE ROW UI FOR STUDENT LIST-->
+                            <DataGrid x:Name="listofstudent_DataGrid" Grid.Row="1" Margin="5" AutoGenerateColumns="False" IsEnabled="True" 
+                                      BorderThickness="2" BorderBrush="Green" AlternatingRowBackground="#F5F5F5" FontWeight="Medium" FontSize="20"
+                                      CanUserAddRows="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal" 
+                                      HorizontalScrollBarVisibility="Auto">
+                                
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID NO" Width="Auto" Binding="{Binding Stdnt_ID, UpdateSourceTrigger= PropertyChanged }"/>
+                                    <DataGridTextColumn Header="FIRSTNAME" Width="Auto" Binding="{Binding Fname, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="MIDDLENAME" Width="AUto" Binding="{Binding Mname, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="LASTNAME" Width="Auto" Binding="{Binding Lname, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="GENDER" Width="Auto" Binding="{Binding Gender, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="DOB" Width="Auto" Binding="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="CLASS" Width="AUto" Binding="{Binding Stdnt_Class, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="DEPARTMENT" Width="Auto" Binding="{Binding Stdnt_Department, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <DataGridTextColumn Header="PASSWORD" Width="Auto" Binding="{Binding Stdnt_Password, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            
+                            <!-- LOWER ROW UI FOR HOSTEL ALLOCATION -->
+                            <Grid Grid.Row="2" Margin="5">
+                                <Border BorderThickness="2" BorderBrush="Green" Padding="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <!-- HOSTEL ALLOCATION CAPTION -->
+                                        <TextBlock Text="Hostel Accomodation" FontSize="30" FontWeight="Bold" Foreground="Green"
+                                                   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0"
+                                                   Margin="0,5,0,15"/>
+                                        
+                                        <!-- UPPER UI DESIGN FOR 00-->
+                                        <Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- 10 UI TO SEARCH STUDENT ID FOR HOSTEL ALLOCATION -->
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Text="Student ID" FontSize="18" FontWeight="Bold" Foreground="Green"
+                                                       HorizontalAlignment="Left" Margin="5" />
+
+                                            <TextBox x:Name="AcceptStudentID_txt" Grid.Row="2" FontSize="18" FontStyle="Normal"
+                                                     Text="{}" FontFamily="Times New Roman" Foreground="Green" TextWrapping="Wrap"/>
+
+                                            <Button x:Name="SearchID_btn" Grid.Column="1" Background="Green" Foreground="White"
+                                                    Click="SearchID_btn_Click" Content="SEARCH" FontWeight="Bold" FontSize="20"
+                                                    HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="1"/>
+                                        </Grid>
+                                        
+                                        <!--20 FOR HOSTEL ALLOCATION
+                                            VISIBLE ONLY IF SEARCH IS TRUE  
+                                        -->
+                                        <Grid x:Name="HostelAllocation_UI_Grid" Grid.Row="2">
+                                            
+                                            <!-- COLOUMN DEFINITION -->
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- ROW DEFINITION -->
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Foreground="Green"
+                                                       Text="Hostel Name:" FontSize="18" FontWeight="Bold" FontFamily="Cascadia Mono"/>
+
+                                            <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Foreground="Green"
+                                                       Text="Block Type:" FontSize="18" FontWeight="Bold" FontFamily="Cascadia Mono"/>
+
+                                            <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Foreground="Green"
+                                                       Text="Room No:" FontSize="18" FontWeight="Bold" FontFamily="Cascadia Mono"/>
+
+                                            <TextBlock Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Foreground="Green"
+                                                       Text="Bed Space:" FontSize="18" FontWeight="Bold" FontFamily="Cascadia Mono"/>
+
+                                            <ComboBox x:Name="hostelNameCmb" Grid.Column="1" Grid.Row="0" FontSize="15" Foreground="Green" FontFamily="Cascadia Mono" 
+                                                      SelectionChanged="hostelNameCmb_SelectionChanged">
+
+                                            </ComboBox>
+
+                                            <ComboBox x:Name="blockType_cmb" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="Green" FontFamily="Cascadia Mono"
+                                                      SelectedValue="Content" SelectionChanged="blockType_cmb_SelectionChanged">
+                                                <ComboBoxItem Content="BLOCK A"/>
+                                                <ComboBoxItem Content="BLOCK B"/>
+                                                <ComboBoxItem Content="BLOCK C"/>
+                                            </ComboBox>
+
+                                            <ComboBox x:Name="roomNo_cmb" Grid.Column="1" Grid.Row="2" FontSize="15" Foreground="Green" FontFamily="Cascadia Mono"
+                                                      SelectedValuePath="Content" SelectionChanged="roomNo_cmb_SelectionChanged">
+                                                <ComboBoxItem Content="1"/>
+                                                <ComboBoxItem Content="2"/>
+                                                <ComboBoxItem Content="3"/>
+                                                <ComboBoxItem Content="5"/>
+                                                <ComboBoxItem Content="6"/>
+                                                <ComboBoxItem Content="7"/>
+                                                <ComboBoxItem Content="8"/>
+                                                <ComboBoxItem Content="9"/>
+                                                <ComboBoxItem Content="10"/>
+                                            </ComboBox>
+
+                                            <ComboBox x:Name="bedSpacecmb" Grid.Column="1" Grid.Row="3" FontSize="15" Foreground="Green" FontFamily="Cascadia Mono"
+                                                      SelectedValuePath="Content" SelectionChanged="bedSpacecmb_SelectionChanged">
+                                                <ComboBoxItem Content="1"/>
+                                                <ComboBoxItem Content="2"/>
+                                                <ComboBoxItem Content="3"/>
+                                                <ComboBoxItem Content="4"/>
+                                            </ComboBox>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </Grid>
                         </Grid>
                     </Border>
                 </Grid>

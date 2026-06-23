@@ -49,7 +49,7 @@
                             Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Admin Access">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="200">
                             <Image Source="/IMAGES/login icon 3.jpg" Width="30" Height="30" Margin="15,0,20,0"/>
-                            <TextBlock Text="STAFF/ADMIN" Width="Auto" FontSize="25" FontWeight="Bold" FontFamily="Cascadia Code" Foreground="#2E7D32" VerticalAlignment="Center"/>
+                            <TextBlock Text="STAFF LOGIN" Width="Auto" FontSize="25" FontWeight="Bold" FontFamily="Cascadia Code" Foreground="#2E7D32" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>

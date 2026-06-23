@@ -40,13 +40,20 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
         private string ParentCity = string.Empty;
         private string ParentOccupation = string.Empty;
 
+        //hostel Accomodation infromation
+        private string hostelname = string.Empty;
+        private string blockType = string.Empty;
+        private string roomNumber = string.Empty;
+        private string bedspaceNumber = string.Empty;
+
         //health information
         private string BloodGroup = string.Empty;
         private string Allergies = string.Empty;
 
         //academic information (this contains the list of subjects offered by the student per Class during Session)
         private List <string> subjects = new List<string>();  
-        private List<string> Result = new List <string> ();
+
+        private List<Subject_Score_Grade> Result = new();
 
         public string Stdnt_ID
         {
@@ -60,7 +67,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public string Stdnt_Class
         {
             get => CurrentClass;
@@ -73,7 +79,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public string Stdnt_Department
         {
             get => ClassDepartment;
@@ -86,7 +91,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public string Stdnt_Password
         {
             get => password;
@@ -298,6 +302,56 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
             }
         }
 
+        public string Hostelname
+        {
+            get => hostelname;
+            set
+            {
+                if (hostelname != value)
+                {
+                    hostelname = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+        public string Blocktype
+        {
+            get => blockType;
+            set
+            {
+                if (blockType != value)
+                {
+                    blockType = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+
+        public string Roomnumber
+        {
+            get => roomNumber;
+            set
+            {
+                if (roomNumber != value)
+                {
+                    roomNumber = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+        public string BedspaceNumber
+        {
+            get => bedspaceNumber;
+            set
+            {
+                if (bedspaceNumber != value)
+                {
+                    bedspaceNumber = value;
+                    OnpropertyChanged();
+                }
+            }
+        }
+
         public string StudentBloodGroup
         {
             get => BloodGroup;
@@ -337,7 +391,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
             }
         }
 
-        public List<string> Student_Resuties
+        public List<Subject_Score_Grade> Student_Resuties
         {
             get => Result;
             set
@@ -357,4 +411,11 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
             PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(propertyName));
         }
     }
+
+    public class Subject_Score_Grade
+    {
+        public string SubjectName { get; set; }
+        public int Score { get; set; }
+        public string Grade { get; set; }
+    } 
 }
