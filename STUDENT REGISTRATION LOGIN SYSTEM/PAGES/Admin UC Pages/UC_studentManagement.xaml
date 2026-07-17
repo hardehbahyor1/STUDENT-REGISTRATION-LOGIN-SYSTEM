@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Visible">
         
         <!-- Static Recources Definiton -->
         <ScrollViewer.Resources>
@@ -419,20 +419,19 @@
                                             <TextBlock Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Foreground="Green"
                                                        Text="Bed Space:" FontSize="18" FontWeight="Bold" FontFamily="Cascadia Mono"/>
 
-                                            <ComboBox x:Name="hostelNameCmb" Grid.Column="1" Grid.Row="0" FontSize="15" Foreground="Green" FontFamily="Cascadia Mono" 
-                                                      SelectionChanged="hostelNameCmb_SelectionChanged">
-
+                                            <ComboBox x:Name="hostelNameCmb" Grid.Column="1" Grid.Row="0" FontSize="15" 
+                                                      Foreground="Green" FontFamily="Cascadia Mono">
                                             </ComboBox>
 
                                             <ComboBox x:Name="blockType_cmb" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="Green" FontFamily="Cascadia Mono"
-                                                      SelectedValue="Content" SelectionChanged="blockType_cmb_SelectionChanged">
+                                                      SelectedValue="Content">
                                                 <ComboBoxItem Content="BLOCK A"/>
                                                 <ComboBoxItem Content="BLOCK B"/>
                                                 <ComboBoxItem Content="BLOCK C"/>
                                             </ComboBox>
 
                                             <ComboBox x:Name="roomNo_cmb" Grid.Column="1" Grid.Row="2" FontSize="15" Foreground="Green" FontFamily="Cascadia Mono"
-                                                      SelectedValuePath="Content" SelectionChanged="roomNo_cmb_SelectionChanged">
+                                                      SelectedValuePath="Content">
                                                 <ComboBoxItem Content="1"/>
                                                 <ComboBoxItem Content="2"/>
                                                 <ComboBoxItem Content="3"/>
@@ -445,7 +444,7 @@
                                             </ComboBox>
 
                                             <ComboBox x:Name="bedSpacecmb" Grid.Column="1" Grid.Row="3" FontSize="15" Foreground="Green" FontFamily="Cascadia Mono"
-                                                      SelectedValuePath="Content" SelectionChanged="bedSpacecmb_SelectionChanged">
+                                                      SelectedValuePath="Content">
                                                 <ComboBoxItem Content="1"/>
                                                 <ComboBoxItem Content="2"/>
                                                 <ComboBoxItem Content="3"/>

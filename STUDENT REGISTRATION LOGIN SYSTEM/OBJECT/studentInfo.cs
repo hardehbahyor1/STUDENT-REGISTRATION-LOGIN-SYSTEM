@@ -54,6 +54,8 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
         private List <string> subjects = new List<string>();  
 
         private List<Subject_Score_Grade> Result = new();
+        public double TotalScore { get; set; }
+        public double AverageScore { get; set; }
 
         public string Stdnt_ID
         {
@@ -237,7 +239,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public string ParentFullName
         {
             get => ParentName;
@@ -250,7 +251,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public string ParentMobile_No
         {
             get => ParentPhoneNo;
@@ -263,7 +263,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public string ParentResidentialAddress
         {
             get => ParentAddress;
@@ -276,7 +275,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public string ParentJobOccupation
         {
             get => ParentOccupation;
@@ -301,7 +299,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public string Hostelname
         {
             get => hostelname;
@@ -326,7 +323,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public string Roomnumber
         {
             get => roomNumber;
@@ -351,7 +347,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public string StudentBloodGroup
         {
             get => BloodGroup;
@@ -364,7 +359,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public string StudentAllergies
         {
             get => Allergies;
@@ -377,7 +371,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
         public List<string> Courses
         {
             get => subjects;
@@ -390,8 +383,7 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
-        public List<Subject_Score_Grade> Student_Resuties
+        public List<Subject_Score_Grade> Student_Results
         {
             get => Result;
             set
@@ -403,19 +395,57 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
                 }
             }
         }
-
-
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnpropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(propertyName));
         }
     }
-
-    public class Subject_Score_Grade
+     public class Subject_Score_Grade
     {
         public string SubjectName { get; set; }
         public int Score { get; set; }
         public string Grade { get; set; }
+        public string Remark { get; set; }
+       
+        public void ComputeGrade()
+        {
+            if(Score >=70 && Score <= 100)
+            {
+                Grade = "A";
+                Remark = "Excellent";
+
+            }
+            else if(Score >=60 && Score <= 69)
+            {
+                Grade = "B";
+                Remark = "Very Good";
+            } 
+            else if (Score >= 50 && Score <= 59)
+            {
+                Grade = "C";
+                Remark= "Good";
+            }
+            else if (Score >= 45 && Score <= 49)
+            {
+                Grade = "D";
+                Remark = "PASS";
+            }
+            else if (Score >= 40 && Score <= 44)
+            {
+                Grade = "E";
+                Remark = "POOR";
+            }
+            else if (Score >= 0 && Score <= 39)
+            {
+                Grade = "F";
+                Remark = "Fail";
+            }
+            else
+            {
+                Grade = "Nill";
+                Remark = "ABS";
+            }
+        }
     } 
 }

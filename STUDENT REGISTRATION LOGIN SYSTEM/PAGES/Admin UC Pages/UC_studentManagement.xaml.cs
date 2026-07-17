@@ -250,6 +250,12 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
             currentsudent.Blocktype = blockType_cmb.Text.ToString();
             currentsudent.Roomnumber = roomNo_cmb.Text.ToString();
 
+            if (string.IsNullOrWhiteSpace(hostelNameCmb.Text) || string.IsNullOrWhiteSpace(bedSpacecmb.Text) ||
+                string.IsNullOrWhiteSpace(roomNo_cmb.Text))
+            {
+                MessageBox.Show("Ensure all Fields are filled correctly", "Information", MessageBoxButton.RetryCancel, MessageBoxImage.Information);
+            }
+
             Database_ConnectionPort.UpdateStudent(currentsudent);
             MessageBox.Show("Hostel allocation successful", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -294,25 +300,5 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
                 return;
             }
         }// used to search for the student before allocating an accomodation
-
-        private void hostelNameCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void blockType_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void roomNo_cmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void bedSpacecmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

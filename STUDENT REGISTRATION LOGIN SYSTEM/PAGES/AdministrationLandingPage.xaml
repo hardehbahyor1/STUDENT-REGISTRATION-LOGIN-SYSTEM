@@ -95,7 +95,7 @@
                 
                 
                 <!-- MAIN CONTENT -->
-                <ScrollViewer Grid.Row="1">
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility= "Visible">
                     <ContentControl x:Name="Admin_Landing_PageDashboard"/>
                 </ScrollViewer>
             </Grid>

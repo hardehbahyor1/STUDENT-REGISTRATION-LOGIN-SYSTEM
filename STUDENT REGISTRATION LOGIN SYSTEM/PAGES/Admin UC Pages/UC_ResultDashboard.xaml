@@ -37,9 +37,9 @@
                 <StackPanel Orientation="Vertical">
                     <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
                                Text="STUDENT RESULT COMPUTATION DASHBOARD" 
-                               Foreground="Green" FontFamily="Cascadia Mono" FontWeight="Bold" FontSize="30">
+                               Foreground="Green" FontFamily="Cascadia Mono" FontWeight="Bold" FontSize="35">
                     </TextBlock>
-                    <TextBlock TextWrapping="Wrap" LineHeight="25" FontSize="18">
+                    <TextBlock TextWrapping="Wrap" LineHeight="25" FontSize="20">
                         <Run Text="⚠ Please read carefully before proceeding:" FontWeight="SemiBold"/><LineBreak/><LineBreak/>
                         <Run Text="1. Search and select the correct student using their"/>
                         <Run Text="Student ID" Foreground="Red" FontWeight="Bold"/> <LineBreak/>
@@ -103,23 +103,40 @@
                 
                 <!-- ROW 2 UI DESIGN -->
                 <!-- DataGrid for Subject & Score Computation -->
-                <StackPanel Orientation="Vertical" Grid.Row="2">
+                <StackPanel Orientation="Vertical" Grid.Row="2" Width="Auto">
                     <DataGrid x:Name="subjectScore_datagrid" Grid.Row="2" AutoGenerateColumns="False"
-                              BorderThickness="2" BorderBrush="Green" AlternatingRowBackground="#F5F5F5" FontWeight="Medium" FontSize="20"
-                              CanUserAddRows="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal" 
-                              HorizontalScrollBarVisibility="Auto">
+                              BorderThickness="2" BorderBrush="Green" AlternatingRowBackground="White" FontWeight="Medium" FontSize="20"
+                              CanUserAddRows="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal"
+                              HorizontalScrollBarVisibility="Auto" IsReadOnly="False">
                         
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="SUBJECT" Width="Auto" IsReadOnly="True" Binding="{Binding SubjectName}"/>
                             <DataGridTextColumn Header="SCORE" Width="Auto" IsReadOnly="False" Binding="{Binding Score, Mode=TwoWay, UpdateSourceTrigger= PropertyChanged }"/>
-                            <DataGridTextColumn Header="SCORE" Width="Auto" IsReadOnly="True" Binding="{Binding Grade}" />
+                            <DataGridTextColumn Header="GRADE" Width="Auto" IsReadOnly="True" Binding="{Binding Grade}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
+                    <Border  CornerRadius="3" BorderBrush="Red" BorderThickness="3" Margin="10,20,10,15">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text= "⚠" FontSize="18" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <TextBlock TextWrapping="Wrap"  VerticalAlignment="Center" FontSize="22" FontFamily="Times New Roman" >
+                                <Run FontWeight="Bold" Text="Important: "/>
+                                <Run Text="Please verify all entries against official staff records. Supplying invalid or falsified data compromises the school's administrative database."/>
+                            </TextBlock>
+
+                            <CheckBox x:Name="chkVerify" Content="I confirm that the staff information entered above is accurate."
+                                      HorizontalAlignment="Center" Margin="0,0,0,20" 
+                                      FontWeight="Bold" Foreground="DarkRed" FontSize="16">
+                            </CheckBox>
+                        </StackPanel>
+                    </Border>
+
                     <Button Name="submit_btn" Click="submit_btn_Click" Margin="10" Width="100"
-                            ToolTip="Click to Save Student Result.">
+                            ToolTip="Click to Save Student Result." IsEnabled="{Binding IsChecked, ElementName=chkVerify}">
                         <Image Source="/IMAGES/Submit bttton.jpg"/>
                     </Button>
+                    
+                    
                 </StackPanel>
 
             </Grid>
