@@ -54,6 +54,8 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.OBJECT
         private List <string> subjects = new List<string>();  
 
         private List<Subject_Score_Grade> Result = new();
+        public double TotalScore { get; set; }
+        public double AverageScore { get; set; }
 
         public string Stdnt_ID
         {
