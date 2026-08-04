@@ -6,23 +6,117 @@
              xmlns:local="clr-namespace:STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Image Source="/IMAGES/UC VIEW IMAGES/student result.jpg" 
-       Opacity="0.2" 
-       Stretch="UniformToFill"/>
+    <ScrollViewer>
+        <Border Padding="0.2" BorderThickness="2" BorderBrush="Green">
+            <!--MAIN GRID FOR UI LAYOUT DISTRIBUTION-->
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="AUto"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="AUto"/>
+                </Grid.RowDefinitions>
 
-        <Border BorderBrush="Green" 
-        BorderThickness="2" 
-        Margin="15"
-        VerticalAlignment="Center" 
-        HorizontalAlignment="Center">
+                <!--00 Heading UI-->
+                <TextBlock Grid.Row="0" Text="Student Result" FontFamily="Arial Black" FontWeight="Bold" FontSize="30"
+                   Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Margin="9"/>
 
-            <Label Content="UNDER DEVELOPMENT" 
-           FontSize="40" 
-           FontWeight="Bold" 
-           Background="Green" 
-           Foreground="White"
-           Padding="20"/>
+                <!--01 Student Info UI-->
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Student Information:" FontFamily="Cascadia Mono" FontWeight="Bold" FontSize="20"
+                   Foreground="White" Background="Green" HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Margin="9"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Registration Number:" Foreground="Green" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                       Margin="5" FontFamily="Cascadia Mono" FontSize="18"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Name:" Foreground="Green" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                       Margin="5" FontFamily="Cascadia Mono" FontSize="18"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Department:" Foreground="Green" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                       Margin="5" FontFamily="Cascadia Mono" FontSize="18"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Class:" Foreground="Green" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                       Margin="5" FontFamily="Cascadia Mono" FontSize="18"/>
+
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="StudentName_txtbox" IsReadOnly ="True" FontSize="18" FontFamily="Times New Roman" FontWeight="Bold" BorderThickness="0" Background="Transparent" Foreground="Black" TextAlignment="Left" 
+                     HorizontalAlignment="Left" Width="Auto"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Name="StudentID_txtbox" IsReadOnly="True" FontSize="18" FontFamily="Times New Roman" FontWeight="Bold" BorderThickness="0" Background="Transparent" TextAlignment="Justify" 
+                     HorizontalAlignment="Left" Width="Auto"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Name="StudentDept_txtbox" IsReadOnly="True" FontSize="18" FontFamily="Times New Roman" FontWeight="Bold" BorderThickness="0" Background="Transparent" TextAlignment="Justify" 
+                     HorizontalAlignment="Left" Width="Auto"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" Name="StudentClass_txtbox" IsReadOnly="True" FontSize="18" FontFamily="Times New Roman" FontWeight="Bold" BorderThickness="0" Background="Transparent" TextAlignment="Justify" 
+                     HorizontalAlignment="Left" Width="Auto"/>
+                </Grid>
+
+                <!--02 Display Result UI Layout-->
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Result Analysis:" FontFamily="Cascadia Mono" FontWeight="Bold" FontSize="20"
+                   Foreground="White" Background="Green" HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Margin="9,0,0,0"/>
+
+                    <DataGrid x:Name="DisplayResult_DataGrid" Grid.Row="1" Width="Auto" AutoGenerateColumns="False" AlternatingRowBackground="White"
+                      BorderBrush="Green" BorderThickness="2" CanUserAddRows="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal"
+                      Margin="9,0,0,0" Padding="5" IsEnabled="False" FontWeight="Medium" FontSize="20">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="SUBJECT" Width="Auto" Binding="{Binding SubjectName, UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Header="SCORE" Width="90" Binding="{Binding Score, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Header="GRADE" Width="90" Binding="{Binding Grade, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Header="REMARK" Width="150" Binding="{Binding Remark, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+                <!--03 UI LAYOUY FOR RESULT ANALYSIS DESIGN-->
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Result Analysis" Grid.Row="0" FontFamily="Cascadia Mono" FontWeight="Bold" FontSize="20"
+                   Foreground="White" Background="Green" HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Margin="9"/>
+
+                    <TextBlock Text="Total Courses:" Grid.Row="01" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Margin="5" FontFamily="Cascadia Mono" FontSize="18"/>
+                    <TextBlock Text="Total Score:" Grid.Row="02" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Margin="5" FontFamily="Cascadia Mono" FontSize="18"/>
+                    <TextBlock Text="Average SCore:" Grid.Row="03" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Margin="5" FontFamily="Cascadia Mono" FontSize="18"/>
+                    <TextBlock Text="Overall Remark:" Grid.Row="4" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Margin="5" FontFamily="Cascadia Mono" FontSize="18"/>
+
+                    <TextBox x:Name="totalCourse_txt" Grid.Row="1" Grid.Column="01"  Width="Auto" IsEnabled="False" FontWeight="Bold" FontFamily="Times New Roman" FontSize="18"/>
+                    <TextBox x:Name="totalScore_txt" Grid.Row="2" Grid.Column="01"  Width="Auto" IsEnabled="False" FontWeight="Bold" FontFamily="Times New Roman" FontSize="18"/>
+                    <TextBox x:Name="AverageScore_txt" Grid.Row="3" Grid.Column="01"  Width="Auto" IsEnabled="False" FontWeight="Bold" FontFamily="Times New Roman" FontSize="18"/>
+                    <TextBox x:Name="Overallremark_txt" Grid.Row="4" Grid.Column="01"  Width="Auto" IsEnabled="False" FontWeight="Bold" FontFamily="Times New Roman" FontSize="18"/>
+                </Grid>
+            </Grid>
         </Border>
-    </Grid>
+    </ScrollViewer>
 </UserControl>

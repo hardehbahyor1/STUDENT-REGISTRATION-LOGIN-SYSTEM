@@ -121,9 +121,9 @@
                 </StackPanel>
 
                 <!-- MAIN CONTENT -->
-                <ScrollViewer Grid.Row="1">
+                <ContentControl Grid.Row="1">
                     <ContentControl x:Name="MainContentFrame"/>
-                </ScrollViewer>
+                </ContentControl>
 
             </Grid>
         </Border>

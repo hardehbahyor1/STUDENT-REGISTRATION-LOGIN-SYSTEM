@@ -300,6 +300,5 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES.Admin_UC_Pages
                 return;
             }
         }// used to search for the student before allocating an accomodation
-        }
     }
 }

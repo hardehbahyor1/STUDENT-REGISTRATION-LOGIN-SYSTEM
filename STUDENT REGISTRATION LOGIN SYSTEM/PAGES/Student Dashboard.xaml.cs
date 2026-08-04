@@ -45,7 +45,6 @@ namespace STUDENT_REGISTRATION_LOGIN_SYSTEM.PAGES
         {
             UC_UpdateBiodata ViewBiodata = new UC_UpdateBiodata(); // Create an instance of the UC_UpdateBiodata user control
             MainContentFrame.Content = ViewBiodata; // Set the content of the MainContentFrame to the UC_UpdateBiodata user control
-
         }
 
         private void Btn_RegisterCourse_Click(object sender, RoutedEventArgs e)
